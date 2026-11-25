@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#0b0f19" />
   <title>Strong Viking 19km</title>
   <style>
@@ -14,8 +15,8 @@
     .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
     .tag { background:rgba(249,115,22,.2); color:var(--acc); font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px; }
     h1 { margin:0; font-size:22px; } .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
-    .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:15px; margin-bottom:14px; }
-    .ttl { font-weight:700; font-size:16px; margin:0 0 10px; display:flex; justify-content:space-between; align-items:center; }
+    .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
+    .ttl { font-weight:800; font-size:17px; margin:0 0 14px 0; display:flex; justify-content:space-between; align-items:center; color:var(--txt); }
     .cd { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
     .cd div { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:10px 4px; text-align:center; }
     .cd b { display:block; font-size:21px; color:var(--acc); } .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
@@ -38,10 +39,13 @@
     .stab { background:var(--card); border:1px solid var(--line); color:var(--dim); padding:10px; border-radius:10px; text-align:center; font-weight:700; font-size:13px; cursor:pointer; }
     .stab.on { border-color:var(--acc); color:var(--acc); background:rgba(249,115,22,.15); }
     .exin { display:grid; grid-template-columns:1fr 1fr 42px; gap:8px; margin-top:8px; }
-    .uitem { border-bottom:1px solid var(--line); padding:10px 0; }
-    .uitem:last-child { border:none; padding-bottom:0; }
-    .utitle { font-weight:700; font-size:14px; color:var(--acc); margin-bottom:4px; }
-    .utext { font-size:13px; color:var(--dim); line-height:1.45; margin:0; }
+
+    /* Directe, overzichtelijke uitlegblokken met witruimte */
+    .u-block { margin-bottom:18px; }
+    .u-block:last-child { margin-bottom:0; }
+    .u-head { font-weight:700; font-size:15px; color:var(--acc); margin-bottom:4px; }
+    .u-desc { font-size:13.5px; color:var(--dim); line-height:1.55; margin:0; white-space:pre-line; }
+
     .nav { position:fixed; bottom:0; left:0; right:0; z-index:99; background:var(--card); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(4,1fr); padding:10px 0 14px; }
     .nbtn { background:none; border:none; color:var(--dim); font-size:11px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; }
     .nbtn.on { color:var(--acc); }
@@ -50,7 +54,7 @@
 <body>
 <div class="wrap">
   <div id="p-dash" class="pg on">
-    <div class="top"><span class="tag">STRONG VIKING 19 KM • V13</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
+    <div class="top"><span class="tag">STRONG VIKING 19 KM • V15</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
     <h1>Dashboard</h1><div class="sub">Wijchen Beast • 10 april 2027</div>
     <div class="box"><div class="ttl">Aftellen tot de start</div>
       <div class="cd"><div><b id="d">0</b><span>Dagen</span></div><div><b id="h">0</b><span>Uren</span></div><div><b id="m">0</b><span>Min</span></div><div><b id="s">0</b><span>Sec</span></div></div>
@@ -136,7 +140,7 @@
     { id: 'w3', t: '3. Hardlopen: Rustige duurloop (praattempo)' },
     { id: 'w4', t: '4. Thuis: 6 kg Kettlebell & enkel/knie balans' }
   ];
-  var wd = JSON.parse(localStorage.getItem('sv13_w') || '{}');
+  var wd = JSON.parse(localStorage.getItem('sv15_w') || '{}');
   function drawW() {
     var el = document.getElementById('wlist'); el.innerHTML = '';
     wt.forEach(function(x) {
@@ -144,14 +148,14 @@
       d.innerHTML = '<span style="font-size:14px;">' + x.t + '</span>';
       var b = document.createElement('button'); b.type = 'button';
       b.className = 'chk' + (wd[x.id] ? ' ok' : ''); b.textContent = '✓';
-      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv13_w', JSON.stringify(wd)); drawW(); });
-      d.appendChild(b); el.appendChild(d);
-      });
+      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv15_w', JSON.stringify(wd)); drawW(); });
+d.appendChild(b); el.appendChild(d);
+});
 }
-document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv13_w', '{}'); drawW(); });
+document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv15_w', '{}'); drawW(); });
 var td = new Date().toISOString().slice(0, 10);
 document.getElementById('r-date').value = td;
-var runs = JSON.parse(localStorage.getItem('sv13_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53"}]');
+var runs = JSON.parse(localStorage.getItem('sv15_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53"}]');
 function calcPace() {
 var km = parseFloat(document.getElementById('r-km').value);
 var tm = document.getElementById('r-time').value.trim();
@@ -175,7 +179,7 @@ var d = document.createElement('div'); d.className = 'ritem';
 d.innerHTML = '' + r.date + '' + r.km + ' km • ' + r.time + ' • ' + r.pace + '/km';
 var x = document.createElement('button'); x.type = 'button'; x.textContent = '×';
 x.style.cssText = 'background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;';
-x.addEventListener('click', function() { runs = runs.filter(function(i) { return i.id !== r.id; }); localStorage.setItem('sv13_r', JSON.stringify(runs)); drawR(); });
+x.addEventListener('click', function() { runs = runs.filter(function(i) { return i.id !== r.id; }); localStorage.setItem('sv15_r', JSON.stringify(runs)); drawR(); });
 d.appendChild(x); h.appendChild(d);
 });
 var ch = document.getElementById('chart'); ch.innerHTML = '';
@@ -193,7 +197,7 @@ var dt = document.getElementById('r-date').value, km = parseFloat(document.getEl
 var tm = document.getElementById('r-time').value, pc = document.getElementById('r-pace').value;
 if (!km) return alert('Vul km in');
 runs.unshift({ id: Date.now(), date: dt, km: km, time: tm || '-', pace: pc || '-' });
-localStorage.setItem('sv13_r', JSON.stringify(runs));
+localStorage.setItem('sv15_r', JSON.stringify(runs));
 document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
 drawR();
 });
@@ -224,7 +228,7 @@ h: [
 { id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
 ]
 };
-var ctab = 'g', est = JSON.parse(localStorage.getItem('sv13_e') || '{}');
+var ctab = 'g', est = JSON.parse(localStorage.getItem('sv15_e') || '{}');
 document.getElementById('st-g').addEventListener('click', function() { ctab = 'g'; this.classList.add('on'); document.getElementById('st-h').classList.remove('on'); drawE(); });
 document.getElementById('st-h').addEventListener('click', function() { ctab = 'h'; this.classList.add('on'); document.getElementById('st-g').classList.remove('on'); drawE(); });
 function drawE() {
@@ -235,45 +239,50 @@ var b = document.createElement('div'); b.className = 'box';
 b.innerHTML = '' + e.n + '' + e.r + '';
 var g = document.createElement('div'); g.className = 'exin';
 var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s;
-i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv13_e', JSON.stringify(est)); });
+i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv15_e', JSON.stringify(est)); });
 var i2 = document.createElement('input'); i2.placeholder = 'Reps / kg'; i2.value = s.r;
-i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv13_e', JSON.stringify(est)); });
+i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv15_e', JSON.stringify(est)); });
 var k = document.createElement('button'); k.type = 'button'; k.className = 'chk' + (s.ok ? ' ok' : '');
 k.style.width = '42px'; k.style.height = '40px'; k.textContent = '✓';
-k.addEventListener('click', function() { est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok; localStorage.setItem('sv13_e', JSON.stringify(est)); drawE(); });
+k.addEventListener('click', function() { est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok; localStorage.setItem('sv15_e', JSON.stringify(est)); drawE(); });
 g.appendChild(i1); g.appendChild(i2); g.appendChild(k); b.appendChild(g); el.appendChild(b);
 });
 }
-document.getElementById('btn-reset-e').addEventListener('click', function() { Object.keys(est).forEach(function(k) { est[k].ok = false; }); localStorage.setItem('sv13_e', JSON.stringify(est)); drawE(); });
+document.getElementById('btn-reset-e').addEventListener('click', function() { Object.keys(est).forEach(function(k) { est[k].ok = false; }); localStorage.setItem('sv15_e', JSON.stringify(est)); drawE(); });
 var uitlegData = [
-{ cat: '🌬️ Ademhaling tijdens het hardlopen\n\n', items: [
-{ t: '1. Buikademhaling\n\n', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.\n' },
-{ t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.\n' },
+{ cat: '🌬️ Ademhaling tijdens het hardlopen', items: [
+{ t: '1. Buikademhaling', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.' },
+{ t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.' },
 { t: '3. Neus én mond + praattest', d: 'Adem tegelijk door neus en licht geopende mond. Tijdens duurlopen moet je nog makkelijk korte zinnen kunnen uitspreken.' }
 ]},
-{ cat: '🏋️ Uitleg Sportschool Oefeningen\n\n', items: [
-{ t: 'Dead Hang\n', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.\n' },
-{ t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.\n' },
-{ t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).\n' },
-{ t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.\n' },
-{ t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.\n' },
-{ t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.\n' }
+{ cat: '🏋️ Sportschool Oefeningen', items: [
+{ t: 'Dead Hang', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.' },
+{ t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.' },
+{ t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).' },
+{ t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.' },
+{ t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.' },
+{ t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.' }
 ]},
-{ cat: '💪 Uitleg Thuis Oefeningen (6 kg KB)\n\n', items: [
-{ t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.\n' },
-{ t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.\n' },
-{ t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.\n' },
-{ t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.\n' },
-{ t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.\n' },
-{ t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen. Burpees: borst naar grond, opspringen. Plank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.\n' }
+{ cat: '💪 Thuis Oefeningen (6 kg KB)', items: [
+{ t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.' },
+{ t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.' },
+{ t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.' },
+{ t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.' },
+{ t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.' },
+{ t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen.\nBurpees: borst naar grond, opspringen.\nPlank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.' }
 ]}
 ];
 var ulist = document.getElementById('ulist');
 uitlegData.forEach(function(sec) {
 var box = document.createElement('div'); box.className = 'box';
-box.innerHTML = '' + sec.cat + '';
+var title = document.createElement('div'); title.className = 'ttl'; title.textContent = sec.cat;
+box.appendChild(title);
 sec.items.forEach(function(it) {
-box.innerHTML += '' + it.t + '' + it.d + '';
+var block = document.createElement('div'); block.className = 'u-block';
+var head = document.createElement('div'); head.className = 'u-head'; head.textContent = it.t;
+var desc = document.createElement('p'); desc.className = 'u-desc'; desc.textContent = it.d;
+block.appendChild(head); block.appendChild(desc);
+box.appendChild(block);
 });
 ulist.appendChild(box);
 });
@@ -282,4 +291,3 @@ drawW(); drawR(); drawE();
 </script>
 </body>
 </html>
-      
