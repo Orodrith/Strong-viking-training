@@ -3,446 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#0b0f19" />
-  <title>Strong Viking 19km Tracker</title>
+  <title>Strong Viking 19km</title>
   <style>
-    :root {
-      --bg: #0b0f19;
-      --card: #151c2c;
-      --card2: #1e293b;
-      --line: #2a374a;
-      --acc: #f97316;
-      --acc-glow: rgba(249, 115, 22, 0.18);
-      --txt: #f8fafc;
-      --dim: #94a3b8;
-      --grn: #10b981;
-      --red: #ef4444;
-    }
-    * {
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    body {
-      margin: 0;
-      padding: 0 0 90px 0;
-      background: var(--bg);
-      color: var(--txt);
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap {
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 18px 16px;
-    }
-    .pg {
-      display: none;
-    }
-    .pg.on {
-      display: block;
-    }
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .tag {
-      background: var(--acc-glow);
-      color: var(--acc);
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 99px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 800;
-    }
-    .sub {
-      color: var(--dim);
-      font-size: 13px;
-      margin: 3px 0 16px 0;
-    }
-    .box {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 14px;
-    }
-    .ttl {
-      font-weight: 700;
-      font-size: 16px;
-      margin: 0 0 10px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .cd {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-    }
-    .cd div {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px 4px;
-      text-align: center;
-    }
-    .cd b {
-      display: block;
-      font-size: 22px;
-      color: var(--acc);
-      font-variant-numeric: tabular-nums;
-    }
-    .cd span {
-      font-size: 10px;
-      color: var(--dim);
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    .wrow {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--line);
-      gap: 10px;
-    }
-    .wrow:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .chk {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      color: transparent;
-      font-weight: 800;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    .chk.ok {
-      background: var(--grn);
-      border-color: var(--grn);
-      color: #052e16;
-    }
-    .chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      height: 150px;
-      padding-top: 22px;
-      border-bottom: 1px solid var(--line);
-    }
-    .col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      justify-content: flex-end;
-    }
-    .bar {
-      width: 100%;
-      max-width: 32px;
-      background: linear-gradient(180deg, var(--acc) 0%, #c2410c 100%);
-      border-radius: 6px 6px 0 0;
-      min-height: 6px;
-      transition: height 0.25s ease;
-    }
-    .g3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    label {
-      display: block;
-      font-size: 12px;
-      color: var(--dim);
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-    input {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      color: var(--txt);
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-    input:focus {
-      outline: none;
-      border-color: var(--acc);
-    }
-    .btn {
-      width: 100%;
-      background: var(--acc);
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      opacity: 0.92;
-    }
-    .sbtn {
-      background: var(--card2);
-      color: var(--txt);
-      border: 1px solid var(--line);
-      padding: 7px 11px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .ritem {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--acc);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .rgrid {
-      display: grid;
-      grid-template-columns: 85px 1fr 1fr;
-      gap: 8px;
-      align-items: center;
-    }
-    .rclk {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--grn);
-      text-align: center;
-      background: var(--bg);
-      padding: 8px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      font-variant-numeric: tabular-nums;
-    }
-    .stabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .stab {
-      background: var(--card);
-      border: 1px solid var(--line);
-      color: var(--dim);
-      padding: 11px;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    .stab.on {
-      border-color: var(--acc);
-      color: var(--acc);
-      background: var(--acc-glow);
-    }
-    .exin {
-      display: grid;
-      grid-template-columns: 1fr 1fr 44px;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 99;
-      background: var(--card);
-      border-top: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      padding: 10px 0 14px 0;
-    }
-    .nbtn {
-      background: none;
-      border: none;
-      color: var(--dim);
-      font-size: 12px;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-    }
-    .nbtn.on {
-      color: var(--acc);
-    }
-    .disclaimer {
-      font-size: 11px;
-      color: var(--dim);
-      text-align: center;
-      margin-top: 20px;
-      line-height: 1.4;
-    }
+    :root { --bg:#0b0f19; --card:#151c2c; --card2:#1e293b; --line:#2a374a; --acc:#f97316; --txt:#f8fafc; --dim:#94a3b8; --grn:#10b981; --red:#ef4444; }
+    * { box-sizing:border-box; font-family:system-ui,-apple-system,sans-serif; }
+    body { margin:0 0 90px 0; background:var(--bg); color:var(--txt); }
+    .wrap { max-width:560px; margin:0 auto; padding:16px; }
+    .pg { display:none; } .pg.on { display:block; }
+    .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .tag { background:rgba(249,115,22,.2); color:var(--acc); font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px; }
+    h1 { margin:0; font-size:22px; } .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
+    .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:15px; margin-bottom:14px; }
+    .ttl { font-weight:700; font-size:16px; margin:0 0 10px; display:flex; justify-content:space-between; align-items:center; }
+    .cd { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+    .cd div { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:10px 4px; text-align:center; }
+    .cd b { display:block; font-size:21px; color:var(--acc); } .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
+    .wrow { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); }
+    .wrow:last-child { border:none; }
+    .chk { width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:transparent; font-weight:800; cursor:pointer; }
+    .chk.ok { background:var(--grn); border-color:var(--grn); color:#052e16; }
+    .chart { display:flex; align-items:flex-end; gap:8px; height:140px; padding-top:20px; border-bottom:1px solid var(--line); }
+    .col { flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end; }
+    .bar { width:100%; max-width:28px; background:var(--acc); border-radius:6px 6px 0 0; min-height:6px; }
+    .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+    label { display:block; font-size:12px; color:var(--dim); margin-bottom:4px; }
+    input { width:100%; background:var(--bg); border:1px solid var(--line); color:var(--txt); padding:10px; border-radius:10px; font-size:14px; }
+    .btn { width:100%; background:var(--acc); color:#fff; border:none; padding:12px; border-radius:12px; font-weight:700; font-size:14px; cursor:pointer; }
+    .sbtn { background:var(--card2); color:var(--txt); border:1px solid var(--line); padding:6px 10px; border-radius:8px; font-size:12px; cursor:pointer; }
+    .ritem { background:var(--bg); border:1px solid var(--line); border-left:4px solid var(--acc); border-radius:12px; padding:11px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+    .rgrid { display:grid; grid-template-columns:80px 1fr 1fr; gap:8px; align-items:center; }
+    .rclk { font-size:24px; font-weight:800; color:var(--grn); text-align:center; background:var(--bg); padding:8px; border-radius:10px; border:1px solid var(--line); }
+    .stabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+    .stab { background:var(--card); border:1px solid var(--line); color:var(--dim); padding:10px; border-radius:10px; text-align:center; font-weight:700; font-size:13px; cursor:pointer; }
+    .stab.on { border-color:var(--acc); color:var(--acc); background:rgba(249,115,22,.15); }
+    .exin { display:grid; grid-template-columns:1fr 1fr 42px; gap:8px; margin-top:8px; }
+    .uitem { border-bottom:1px solid var(--line); padding:10px 0; }
+    .uitem:last-child { border:none; padding-bottom:0; }
+    .utitle { font-weight:700; font-size:14px; color:var(--acc); margin-bottom:4px; }
+    .utext { font-size:13px; color:var(--dim); line-height:1.45; margin:0; }
+    .nav { position:fixed; bottom:0; left:0; right:0; z-index:99; background:var(--card); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(4,1fr); padding:10px 0 14px; }
+    .nbtn { background:none; border:none; color:var(--dim); font-size:11px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; }
+    .nbtn.on { color:var(--acc); }
   </style>
 </head>
 <body>
-
 <div class="wrap">
-  <!-- PAGINA 1: DASHBOARD -->
   <div id="p-dash" class="pg on">
-    <div class="top">
-      <span class="tag">STRONG VIKING 19 KM</span>
-      <button type="button" class="sbtn" onclick="resetWeek()">&#8635; Reset week</button>
+    <div class="top"><span class="tag">STRONG VIKING 19 KM • V13</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
+    <h1>Dashboard</h1><div class="sub">Wijchen Beast • 10 april 2027</div>
+    <div class="box"><div class="ttl">Aftellen tot de start</div>
+      <div class="cd"><div><b id="d">0</b><span>Dagen</span></div><div><b id="h">0</b><span>Uren</span></div><div><b id="m">0</b><span>Min</span></div><div><b id="s">0</b><span>Sec</span></div></div>
     </div>
-    <h1>Dashboard</h1>
-    <div class="sub">Wijchen Beast &bull; 10 april 2027</div>
-
-    <div class="box">
-      <div class="ttl">Aftellen tot aan de run</div>
-      <div class="cd">
-        <div><b id="d">0</b><span>Dagen</span></div>
-        <div><b id="h">0</b><span>Uren</span></div>
-        <div><b id="m">0</b><span>Min</span></div>
-        <div><b id="s">0</b><span>Sec</span></div>
-      </div>
-    </div>
-
-    <div class="box">
-      <div class="ttl">Overzicht wat ik per week moet doen</div>
-      <div id="wlist"></div>
-    </div>
-
-    <div class="box">
-      <div class="ttl">
-        <span>Staafgrafiek hardlopen (km)</span>
-        <span id="tkm" style="color:var(--acc);font-size:13px;">0 km</span>
-      </div>
-      <div class="chart" id="chart"></div>
-    </div>
+    <div class="box"><div class="ttl">Weekoverzicht (4 trainingen)</div><div id="wlist"></div></div>
+    <div class="box"><div class="ttl"><span>Hardloop Kilometers</span><span id="tkm" style="color:var(--acc);font-size:13px;">0 km</span></div><div class="chart" id="chart"></div></div>
   </div>
 
-  <!-- PAGINA 2: LOGBOEK HARDLOPEN -->
   <div id="p-run" class="pg">
-    <div class="top">
-      <span class="tag">HARDLOPEN</span>
-    </div>
-    <h1>Logboek Hardlopen</h1>
-    <div class="sub">Vul je afstand (km), tijd en pace in</div>
-
+    <div class="top"><span class="tag">HARDLOPEN</span></div>
+    <h1>Hardloop Logboek</h1><div class="sub">Vul je afstand, tijd en pace in</div>
     <div class="box">
-      <div style="margin-bottom:10px;">
-        <label for="r-date">Datum</label>
-        <input type="date" id="r-date" />
-      </div>
+      <div style="margin-bottom:10px;"><label>Datum</label><input type="date" id="r-date"></div>
       <div class="g3">
-        <div>
-          <label for="r-km">Afstand (km)</label>
-          <input type="number" step="0.01" id="r-km" placeholder="5.23" onblur="calcPace()" />
-        </div>
-        <div>
-          <label for="r-time">Tijd (min)</label>
-          <input type="text" id="r-time" placeholder="36:00" onblur="calcPace()" />
-        </div>
-        <div>
-          <label for="r-pace">Pace (/km)</label>
-          <input type="text" id="r-pace" placeholder="6:53" />
-        </div>
+        <div><label>Afstand (km)</label><input type="number" step="0.01" id="r-km" placeholder="5.23"></div>
+        <div><label>Tijd (min)</label><input type="text" id="r-time" placeholder="36:00"></div>
+        <div><label>Pace (/km)</label><input type="text" id="r-pace" placeholder="6:53"></div>
       </div>
-      <button type="button" class="btn" onclick="addRun()">Run opslaan</button>
+      <button type="button" class="btn" id="btn-add-run">Run opslaan</button>
     </div>
-
-    <div class="box">
-      <div class="ttl">Opgeslagen runs</div>
-      <div id="r-hist"></div>
-    </div>
+    <div class="box"><div class="ttl">Opgeslagen runs</div><div id="r-hist"></div></div>
   </div>
 
-  <!-- PAGINA 3: OEFENINGEN SPORTSCHOOL & THUIS -->
   <div id="p-work" class="pg">
-    <div class="top">
-      <span class="tag">KRACHT &amp; STABILITEIT</span>
-      <button type="button" class="sbtn" onclick="resetEx()">&#8635; Vinkjes wissen</button>
-    </div>
-    <h1>Oefeningen</h1>
-    <div class="sub">Vul sets en reps in + gebruik je eigen rustteller</div>
-
+    <div class="top"><span class="tag">KRACHT & STABILITEIT</span><button type="button" class="sbtn" id="btn-reset-e">↻ Vinkjes wissen</button></div>
+    <h1>Oefeningen</h1><div class="sub">Vul sets en reps in + gebruik je eigen rustteller</div>
     <div class="box" style="border-color:var(--acc);">
-      <div class="ttl">
-        <span>Rustteller</span>
-        <span style="font-size:11px;color:var(--dim);">Zelf seconden invullen</span>
-      </div>
+      <div class="ttl"><span>Rustteller</span><span style="font-size:11px;color:var(--dim);">Zelf seconden invullen</span></div>
       <div class="rgrid">
-        <input type="number" id="t-in" value="60" min="5" max="900" oninput="updRestPreview()" style="text-align:center;font-weight:700;" />
+        <input type="number" id="t-in" value="60" style="text-align:center;font-weight:700;">
         <div class="rclk" id="t-out">01:00</div>
-        <div style="display:flex;gap:6px;">
-          <button type="button" class="btn" onclick="startRest()" style="padding:10px;">Start</button>
-          <button type="button" class="sbtn" onclick="stopRest()" style="padding:10px;">Stop</button>
-        </div>
+        <div style="display:flex;gap:6px;"><button type="button" class="btn" id="btn-t-start" style="padding:10px;">Start</button><button type="button" class="sbtn" id="btn-t-stop" style="padding:10px;">Stop</button></div>
       </div>
     </div>
-
     <div class="stabs">
-      <div class="stab on" id="st-g" onclick="switchExTab('g')">Sportschool</div>
-      <div class="stab" id="st-h" onclick="switchExTab('h')">Thuis (6 kg KB)</div>
+      <div class="stab on" id="st-g">🏋️ Sportschool</div>
+      <div class="stab" id="st-h">💪 Thuis (6 kg KB)</div>
     </div>
-
     <div id="elist"></div>
   </div>
 
-<div id="p-info" class="pg">
+  <div id="p-info" class="pg">
     <div class="top"><span class="tag">TECHNIEK & UITLEG</span></div>
     <h1>Uitleg & Techniek</h1><div class="sub">Ademhaling en uitvoering van alle oefeningen</div>
     <div id="ulist"></div>
-  
-  <div class="disclaimer">
-    This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes.
   </div>
 </div>
 
 <div class="nav">
-  <button type="button" class="nbtn on" id="nav-dash" onclick="openPage('dash')">
-    <span style="font-size:18px;">&#128202;</span>Dashboard
-  </button>
-  <button type="button" class="nbtn" id="nav-run" onclick="openPage('run')">
-    <span style="font-size:18px;">&#127939;</span>Hardlopen
-  </button>
-  <button type="button" class="nbtn" id="nav-work" onclick="openPage('work')">
-    <span style="font-size:18px;">&#127947;</span>Oefeningen
-  </button>
-  <button type="button" class="nbtn" data-pg="info">
-    <span style="font-size:18px;">📖</span>Uitleg
-  </button>
+  <button type="button" class="nbtn on" data-pg="dash"><span style="font-size:18px;">📊</span>Dashboard</button>
+  <button type="button" class="nbtn" data-pg="run"><span style="font-size:18px;">🏃</span>Hardlopen</button>
+  <button type="button" class="nbtn" data-pg="work"><span style="font-size:18px;">🏋️</span>Oefeningen</button>
+  <button type="button" class="nbtn" data-pg="info"><span style="font-size:18px;">📖</span>Uitleg</button>
 </div>
 
 <script>
-  function openPage(name) {
-    document.getElementById('p-dash').className = (name === 'dash') ? 'pg on' : 'pg';
-    document.getElementById('p-run').className = (name === 'run') ? 'pg on' : 'pg';
-    document.getElementById('p-work').className = (name === 'work') ? 'pg on' : 'pg';
-    document.getElementById('nav-dash').className = (name === 'dash') ? 'nbtn on' : 'nbtn';
-    document.getElementById('nav-run').className = (name === 'run') ? 'nbtn on' : 'nbtn';
-    document.getElementById('nav-work').className = (name === 'work') ? 'nbtn on' : 'nbtn';
-    window.scrollTo(0, 0);
-  }
+(function() {
+  var navBtns = document.querySelectorAll('.nbtn');
+  navBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var name = btn.getAttribute('data-pg');
+      document.querySelectorAll('.pg').forEach(function(p) { p.classList.remove('on'); });
+      navBtns.forEach(function(n) { n.classList.remove('on'); });
+      document.getElementById('p-' + name).classList.add('on');
+      btn.classList.add('on');
+      window.scrollTo(0, 0);
+    });
+  });
 
-  // 1. Aftelklok tot 10 april 2027 09:00
   var race = new Date(2027, 3, 10, 9, 0, 0).getTime();
   function clk() {
     var df = Math.max(0, race - Date.now());
@@ -451,270 +128,158 @@
     document.getElementById('m').textContent = Math.floor((df / 60000) % 60);
     document.getElementById('s').textContent = Math.floor((df / 1000) % 60);
   }
-  clk();
-  setInterval(clk, 1000);
+  clk(); setInterval(clk, 1000);
 
-  // 2. Weekoverzicht
   var wt = [
     { id: 'w1', t: '1. Hardlopen: Korte interval / opbouw' },
     { id: 'w2', t: '2. Sportschool: Trek, grip & benen' },
     { id: 'w3', t: '3. Hardlopen: Rustige duurloop (praattempo)' },
     { id: 'w4', t: '4. Thuis: 6 kg Kettlebell & enkel/knie balans' }
   ];
-  var wd = {};
-  try { wd = JSON.parse(localStorage.getItem('sv_final_w') || '{}'); } catch (e) {}
-
+  var wd = JSON.parse(localStorage.getItem('sv13_w') || '{}');
   function drawW() {
-    var el = document.getElementById('wlist');
-    el.innerHTML = '';
+    var el = document.getElementById('wlist'); el.innerHTML = '';
     wt.forEach(function(x) {
-      var d = document.createElement('div');
-      d.className = 'wrow';
-      var sp = document.createElement('span');
-      sp.style.fontSize = '14px';
-      sp.textContent = x.t;
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'chk' + (wd[x.id] ? ' ok' : '');
-      b.textContent = '✓';
-      b.onclick = function() {
-        wd[x.id] = !wd[x.id];
-        try { localStorage.setItem('sv_final_w', JSON.stringify(wd)); } catch (e) {}
-        drawW();
-      };
-      d.appendChild(sp);
-      d.appendChild(b);
-      el.appendChild(d);
-    });
-  }
-
-  function resetWeek() {
-    wd = {};
-    try { localStorage.setItem('sv_final_w', '{}'); } catch (e) {}
-    drawW();
-  }
-
-  // 3. Hardlopen Logboek & Staafgrafiek
-  var td = new Date().toISOString().slice(0, 10);
-  document.getElementById('r-date').value = td;
-  var runs = [{ id: 1, date: td, km: 5.23, time: '36:00', pace: '6:53' }];
-  try {
-    var savedR = localStorage.getItem('sv_final_r');
-    if (savedR) runs = JSON.parse(savedR);
-  } catch (e) {}
-
-  function calcPace() {
-    var km = parseFloat(document.getElementById('r-km').value);
-    var tm = document.getElementById('r-time').value.trim();
-    if (km > 0 && tm) {
-      var pts = tm.split(':');
-      var mins = pts.length === 2 ? (parseFloat(pts[0]) + parseFloat(pts[1]) / 60) : parseFloat(tm);
-      if (mins > 0) {
-        var p = mins / km;
-        var pm = Math.floor(p);
-        var ps = Math.round((p - pm) * 60);
-        if (ps === 60) { pm++; ps = 0; }
-        document.getElementById('r-pace').value = pm + ':' + String(ps).padStart(2, '0');
-      }
-    }
-  }
-
-  function drawR() {
-    var h = document.getElementById('r-hist');
-    h.innerHTML = '';
-    if (runs.length === 0) {
-      h.innerHTML = '<div style="color:var(--dim);font-size:13px;">Nog geen runs opgeslagen.</div>';
-    } else {
-      runs.forEach(function(r) {
-        var d = document.createElement('div');
-        d.className = 'ritem';
-        var info = document.createElement('div');
-        info.innerHTML = '<div style="font-size:11px;color:var(--dim);">' + r.date + '</div>' +
-          '<div style="font-weight:700;font-size:14px;"><span style="color:var(--acc);">' + r.km + ' km</span> &bull; ' + r.time + ' &bull; ' + r.pace + '/km</div>';
-        var x = document.createElement('button');
-        x.type = 'button';
-        x.textContent = '×';
-        x.style.cssText = 'background:none;border:none;color:var(--red);font-size:22px;cursor:pointer;padding:0 6px;';
-        x.onclick = function() {
-          runs = runs.filter(function(i) { return i.id !== r.id; });
-          try { localStorage.setItem('sv_final_r', JSON.stringify(runs)); } catch (e) {}
-          drawR();
-        };
-        d.appendChild(info);
-        d.appendChild(x);
-        h.appendChild(d);
+      var d = document.createElement('div'); d.className = 'wrow';
+      d.innerHTML = '<span style="font-size:14px;">' + x.t + '</span>';
+      var b = document.createElement('button'); b.type = 'button';
+      b.className = 'chk' + (wd[x.id] ? ' ok' : ''); b.textContent = '✓';
+      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv13_w', JSON.stringify(wd)); drawW(); });
+      d.appendChild(b); el.appendChild(d);
       });
-    }
-
-    var ch = document.getElementById('chart');
-    ch.innerHTML = '';
-    var tot = runs.reduce(function(s, r) { return s + (parseFloat(r.km) || 0); }, 0);
-    document.getElementById('tkm').textContent = 'Totaal: ' + tot.toFixed(1) + ' km';
-
-    if (runs.length === 0) {
-      ch.innerHTML = '<div style="color:var(--dim);font-size:13px;">Voeg een run toe om de grafiek te zien.</div>';
-      return;
-    }
-
-    var rec = runs.slice(0, 7).reverse();
-    var mx = Math.max(5, Math.max.apply(null, rec.map(function(r) { return parseFloat(r.km) || 0; })));
-    rec.forEach(function(r) {
-      var pct = Math.min(100, Math.round(((parseFloat(r.km) || 0) / mx) * 100));
-      var col = document.createElement('div');
-      col.className = 'col';
-      col.innerHTML = '<span style="font-size:11px;font-weight:700;margin-bottom:4px;">' + r.km + '</span>' +
-        '<div class="bar" style="height:' + pct + '%"></div>' +
-        '<span style="font-size:10px;color:var(--dim);margin-top:4px;">' + r.date.slice(5) + '</span>';
-      ch.appendChild(col);
-    });
-  }
-
-  function addRun() {
-    var dt = document.getElementById('r-date').value;
-    var km = parseFloat(document.getElementById('r-km').value);
-    var tm = document.getElementById('r-time').value.trim();
-    var pc = document.getElementById('r-pace').value.trim();
-    if (!km || km <= 0) {
-      alert('Vul eerst het aantal kilometers in.');
-      return;
-    }
-    runs.unshift({ id: Date.now(), date: dt || td, km: km, time: tm || '-', pace: pc || '-' });
-    try { localStorage.setItem('sv_final_r', JSON.stringify(runs)); } catch (e) {}
-    document.getElementById('r-km').value = '';
-    document.getElementById('r-time').value = '';
-    document.getElementById('r-pace').value = '';
-    drawR();
-  }
-
-  // 4. Invulbare Rustteller
-  var ti = null, tr = 60;
-  function fmt(s) {
-    return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
-  }
-  function updRestPreview() {
-    if (!ti) {
-      var val = parseInt(document.getElementById('t-in').value, 10) || 0;
-      document.getElementById('t-out').textContent = fmt(Math.max(0, val));
-    }
-  }
-  function startRest() {
-    clearInterval(ti);
-    tr = Math.max(1, parseInt(document.getElementById('t-in').value, 10) || 60);
-    document.getElementById('t-out').style.color = 'var(--acc)';
-    document.getElementById('t-out').textContent = fmt(tr);
-    ti = setInterval(function() {
-      tr--;
-      document.getElementById('t-out').textContent = fmt(Math.max(0, tr));
-      if (tr <= 0) {
-        clearInterval(ti);
-        ti = null;
-        document.getElementById('t-out').style.color = 'var(--grn)';
-      }
-    }, 1000);
-  }
-  function stopRest() {
-    clearInterval(ti);
-    ti = null;
-    document.getElementById('t-out').style.color = 'var(--grn)';
-    var val = parseInt(document.getElementById('t-in').value, 10) || 60;
-    document.getElementById('t-out').textContent = fmt(Math.max(0, val));
-  }
-
-  // 5. Oefeningen Sportschool & Thuis
-  var exs = {
-    g: [
-      { id: 'g1', n: 'Dead Hang (optrekstang)', r: '3 × 20-40 sec' },
-      { id: 'g2', n: 'Pull-ups / Lat Pulldown', r: '3 × 8-10 reps' },
-      { id: 'g3', n: 'Goblet Squat / Leg Press', r: '3 × 10-12 reps' },
-      { id: 'g4', n: "Farmer's Carry", r: '3 × 30-40m' },
-      { id: 'g5', n: 'Inverted / Seated Row', r: '3 × 10-12 reps' },
-      { id: 'g6', n: 'Staande Calf Raises', r: '3 × 12-15 reps' }
-    ],
-    h: [
-      { id: 'h1', n: 'Single-Leg RDL (6 kg KB)', r: '3 × 8-10 p/been' },
-      { id: 'h2', n: 'Reverse Lunges (6 kg KB)', r: '3 × 10 p/been' },
-      { id: 'h3', n: 'Kettlebell Halo (6 kg)', r: '3 × 8 L + 8 R' },
-      { id: 'h4', n: 'Push-ups', r: '3 × 10-15 reps' },
-      { id: 'h5', n: 'Single-Leg Glute Bridge', r: '3 × 12 p/been' },
-      { id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
-    ]
-  };
-  var ctab = 'g';
-  var est = {};
-  try { est = JSON.parse(localStorage.getItem('sv_final_e') || '{}'); } catch (e) {}
-
-  function switchExTab(t) {
-    ctab = t;
-    document.getElementById('st-g').className = (t === 'g') ? 'stab on' : 'stab';
-    document.getElementById('st-h').className = (t === 'h') ? 'stab on' : 'stab';
-    drawE();
-  }
-
-  function drawE() {
-    var el = document.getElementById('elist');
-    el.innerHTML = '';
-    exs[ctab].forEach(function(e) {
-      var s = est[e.id] || { s: '', r: '', ok: false };
-      var b = document.createElement('div');
-      b.className = 'box';
-
-      var head = document.createElement('div');
-      head.className = 'ttl';
-      head.style.marginBottom = '4px';
-      head.innerHTML = '<span>' + e.n + '</span><span style="font-size:11px;color:var(--dim);">' + e.r + '</span>';
-
-      var g = document.createElement('div');
-      g.className = 'exin';
-
-      var i1 = document.createElement('input');
-      i1.placeholder = 'Sets (bijv. 3)';
-      i1.value = s.s;
-      i1.oninput = function() {
-        est[e.id] = est[e.id] || { s: '', r: '', ok: false };
-        est[e.id].s = i1.value;
-        try { localStorage.setItem('sv_final_e', JSON.stringify(est)); } catch (err) {}
-      };
-
-      var i2 = document.createElement('input');
-      i2.placeholder = 'Reps / kg';
-      i2.value = s.r;
-      i2.oninput = function() {
-        est[e.id] = est[e.id] || { s: '', r: '', ok: false };
-        est[e.id].r = i2.value;
-        try { localStorage.setItem('sv_final_e', JSON.stringify(est)); } catch (err) {}
-      };
-
-      var k = document.createElement('button');
-      k.type = 'button';
-      k.className = 'chk' + (s.ok ? ' ok' : '');
-      k.style.width = '44px';
-      k.style.height = '40px';
-      k.textContent = '✓';
-      k.onclick = function() {
-        est[e.id] = est[e.id] || { s: '', r: '', ok: false };
-        est[e.id].ok = !est[e.id].ok;
-        try { localStorage.setItem('sv_final_e', JSON.stringify(est)); } catch (err) {}
-        drawE();
-      };
-
-      g.appendChild(i1);
-      g.appendChild(i2);
-      g.appendChild(k);
-      b.appendChild(head);
-      b.appendChild(g);
-      el.appendChild(b);
-    });
-  }
-
-  function resetEx() {
-    Object.keys(est).forEach(function(k) { est[k].ok = false; });
-    try { localStorage.setItem('sv_final_e', JSON.stringify(est)); } catch (e) {}
-    drawE();
-  }
-
-  drawW();
-  drawR();
-  drawE();
+}
+document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv13_w', '{}'); drawW(); });
+var td = new Date().toISOString().slice(0, 10);
+document.getElementById('r-date').value = td;
+var runs = JSON.parse(localStorage.getItem('sv13_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53"}]');
+function calcPace() {
+var km = parseFloat(document.getElementById('r-km').value);
+var tm = document.getElementById('r-time').value.trim();
+if (km > 0 && tm) {
+var col = tm.indexOf(':');
+var min = col > -1 ? (parseFloat(tm.slice(0, col)) + parseFloat(tm.slice(col + 1)) / 60) : parseFloat(tm);
+if (min > 0) {
+var dec = min / km;
+var pm = Math.floor(dec), ps = Math.round((dec - pm) * 60);
+if (ps === 60) { pm++; ps = 0; }
+document.getElementById('r-pace').value = pm + ':' + String(ps).padStart(2, '0');
+}
+}
+}
+document.getElementById('r-km').addEventListener('blur', calcPace);
+document.getElementById('r-time').addEventListener('blur', calcPace);
+function drawR() {
+var h = document.getElementById('r-hist'); h.innerHTML = '';
+runs.forEach(function(r) {
+var d = document.createElement('div'); d.className = 'ritem';
+d.innerHTML = '' + r.date + '' + r.km + ' km • ' + r.time + ' • ' + r.pace + '/km';
+var x = document.createElement('button'); x.type = 'button'; x.textContent = '×';
+x.style.cssText = 'background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;';
+x.addEventListener('click', function() { runs = runs.filter(function(i) { return i.id !== r.id; }); localStorage.setItem('sv13_r', JSON.stringify(runs)); drawR(); });
+d.appendChild(x); h.appendChild(d);
+});
+var ch = document.getElementById('chart'); ch.innerHTML = '';
+var tot = runs.reduce(function(s, r) { return s + (parseFloat(r.km) || 0); }, 0);
+document.getElementById('tkm').textContent = 'Totaal: ' + tot.toFixed(1) + ' km';
+var rec = runs.slice(0, 7).reverse();
+var mx = Math.max(5, Math.max.apply(null, rec.map(function(r) { return parseFloat(r.km) || 0; })));
+rec.forEach(function(r) {
+var pct = Math.min(100, Math.round(((parseFloat(r.km) || 0) / mx) * 100));
+ch.innerHTML += '' + r.km + '' + r.date.slice(5) + '';
+});
+}
+document.getElementById('btn-add-run').addEventListener('click', function() {
+var dt = document.getElementById('r-date').value, km = parseFloat(document.getElementById('r-km').value);
+var tm = document.getElementById('r-time').value, pc = document.getElementById('r-pace').value;
+if (!km) return alert('Vul km in');
+runs.unshift({ id: Date.now(), date: dt, km: km, time: tm || '-', pace: pc || '-' });
+localStorage.setItem('sv13_r', JSON.stringify(runs));
+document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
+drawR();
+});
+var ti = null, tr = 60;
+function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+document.getElementById('t-in').addEventListener('input', function() { if (!ti) document.getElementById('t-out').textContent = fmt(parseInt(this.value, 10) || 0); });
+document.getElementById('btn-t-start').addEventListener('click', function() {
+clearInterval(ti); tr = parseInt(document.getElementById('t-in').value, 10) || 60;
+document.getElementById('t-out').style.color = 'var(--acc)'; document.getElementById('t-out').textContent = fmt(tr);
+ti = setInterval(function() { tr--; document.getElementById('t-out').textContent = fmt(Math.max(0, tr)); if (tr <= 0) { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; } }, 1000);
+});
+document.getElementById('btn-t-stop').addEventListener('click', function() { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; document.getElementById('t-out').textContent = fmt(parseInt(document.getElementById('t-in').value, 10) || 60); });
+var exs = {
+g: [
+{ id: 'g1', n: 'Dead Hang (optrekstang)', r: '3 × 20-40 sec' },
+{ id: 'g2', n: 'Pull-ups / Lat Pulldown', r: '3 × 8-10 reps' },
+{ id: 'g3', n: 'Goblet Squat / Leg Press', r: '3 × 10-12 reps' },
+{ id: 'g4', n: "Farmer's Carry", r: '3 × 30-40m' },
+{ id: 'g5', n: 'Inverted / Seated Row', r: '3 × 10-12 reps' },
+{ id: 'g6', n: 'Staande Calf Raises', r: '3 × 12-15 reps' }
+],
+h: [
+{ id: 'h1', n: 'Single-Leg RDL (6 kg KB)', r: '3 × 8-10 p/been' },
+{ id: 'h2', n: 'Reverse Lunges (6 kg KB)', r: '3 × 10 p/been' },
+{ id: 'h3', n: 'Kettlebell Halo (6 kg)', r: '3 × 8 L + 8 R' },
+{ id: 'h4', n: 'Push-ups', r: '3 × 10-15 reps' },
+{ id: 'h5', n: 'Single-Leg Glute Bridge', r: '3 × 12 p/been' },
+{ id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
+]
+};
+var ctab = 'g', est = JSON.parse(localStorage.getItem('sv13_e') || '{}');
+document.getElementById('st-g').addEventListener('click', function() { ctab = 'g'; this.classList.add('on'); document.getElementById('st-h').classList.remove('on'); drawE(); });
+document.getElementById('st-h').addEventListener('click', function() { ctab = 'h'; this.classList.add('on'); document.getElementById('st-g').classList.remove('on'); drawE(); });
+function drawE() {
+var el = document.getElementById('elist'); el.innerHTML = '';
+exs[ctab].forEach(function(e) {
+var s = est[e.id] || { s: '', r: '', ok: false };
+var b = document.createElement('div'); b.className = 'box';
+b.innerHTML = '' + e.n + '' + e.r + '';
+var g = document.createElement('div'); g.className = 'exin';
+var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s;
+i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv13_e', JSON.stringify(est)); });
+var i2 = document.createElement('input'); i2.placeholder = 'Reps / kg'; i2.value = s.r;
+i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv13_e', JSON.stringify(est)); });
+var k = document.createElement('button'); k.type = 'button'; k.className = 'chk' + (s.ok ? ' ok' : '');
+k.style.width = '42px'; k.style.height = '40px'; k.textContent = '✓';
+k.addEventListener('click', function() { est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok; localStorage.setItem('sv13_e', JSON.stringify(est)); drawE(); });
+g.appendChild(i1); g.appendChild(i2); g.appendChild(k); b.appendChild(g); el.appendChild(b);
+});
+}
+document.getElementById('btn-reset-e').addEventListener('click', function() { Object.keys(est).forEach(function(k) { est[k].ok = false; }); localStorage.setItem('sv13_e', JSON.stringify(est)); drawE(); });
+var uitlegData = [
+{ cat: '🌬️ Ademhaling tijdens het hardlopen', items: [
+{ t: '1. Buikademhaling', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.' },
+{ t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.' },
+{ t: '3. Neus én mond + praattest', d: 'Adem tegelijk door neus en licht geopende mond. Tijdens duurlopen moet je nog makkelijk korte zinnen kunnen uitspreken.' }
+]},
+{ cat: '🏋️ Uitleg Sportschool Oefeningen', items: [
+{ t: 'Dead Hang', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.' },
+{ t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.' },
+{ t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).' },
+{ t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.' },
+{ t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.' },
+{ t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.' }
+]},
+{ cat: '💪 Uitleg Thuis Oefeningen (6 kg KB)', items: [
+{ t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.' },
+{ t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.' },
+{ t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.' },
+{ t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.' },
+{ t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.' },
+{ t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen. Burpees: borst naar grond, opspringen. Plank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.' }
+]}
+];
+var ulist = document.getElementById('ulist');
+uitlegData.forEach(function(sec) {
+var box = document.createElement('div'); box.className = 'box';
+box.innerHTML = '' + sec.cat + '';
+sec.items.forEach(function(it) {
+box.innerHTML += '' + it.t + '' + it.d + '';
+});
+ulist.appendChild(box);
+});
+drawW(); drawR(); drawE();
+})();
 </script>
 </body>
 </html>
+      
