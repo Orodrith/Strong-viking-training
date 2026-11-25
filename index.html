@@ -12,18 +12,15 @@
     * { box-sizing:border-box; font-family:system-ui,-apple-system,sans-serif; }
     body { margin:0 0 90px 0; background:var(--bg); color:var(--txt); }
     .wrap { max-width:560px; margin:0 auto; padding:16px; }
-    .pg { display:none; }
-    .pg.on { display:block; }
+    .pg { display:none; } .pg.on { display:block; }
     .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
     .tag { background:rgba(249,115,22,.2); color:var(--acc); font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px; }
-    h1 { margin:0; font-size:22px; }
-    .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
+    h1 { margin:0; font-size:22px; } .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
     .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
     .ttl { font-weight:800; font-size:16px; margin:0 0 12px 0; display:flex; justify-content:space-between; align-items:center; color:var(--txt); }
     .cd { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
     .cd div { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:10px 4px; text-align:center; }
-    .cd b { display:block; font-size:21px; color:var(--acc); }
-    .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
+    .cd b { display:block; font-size:21px; color:var(--acc); } .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
     .wrow { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); }
     .wrow:last-child { border:none; }
     .chk { width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:transparent; font-weight:800; cursor:pointer; flex-shrink:0; }
@@ -39,11 +36,8 @@
     .sbtn { background:var(--card2); color:var(--txt); border:1px solid var(--line); padding:6px 10px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; }
     .ritem { background:var(--bg); border:1px solid var(--line); border-left:4px solid var(--acc); border-radius:12px; padding:11px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
     .zbadge { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; margin-top:4px; }
-    .z1 { background:rgba(148,163,184,0.2); color:#cbd5e1; }
-    .z2 { background:rgba(16,185,129,0.2); color:#34d399; }
-    .z3 { background:rgba(59,130,246,0.2); color:#60a5fa; }
-    .z4 { background:rgba(249,115,22,0.2); color:#fb923c; }
-    .z5 { background:rgba(239,68,68,0.2); color:#f87171; }
+    .z1 { background:rgba(148,163,184,0.2); color:#cbd5e1; } .z2 { background:rgba(16,185,129,0.2); color:#34d399; }
+    .z3 { background:rgba(59,130,246,0.2); color:#60a5fa; } .z4 { background:rgba(249,115,22,0.2); color:#fb923c; } .z5 { background:rgba(239,68,68,0.2); color:#f87171; }
     .shoe-bar-bg { width:100%; height:10px; background:var(--bg); border-radius:99px; overflow:hidden; border:1px solid var(--line); margin:8px 0 6px 0; }
     .shoe-bar-fill { height:100%; background:var(--grn); transition:width 0.3s ease; }
     .rgrid { display:grid; grid-template-columns:80px 1fr 1fr; gap:8px; align-items:center; }
@@ -58,8 +52,7 @@
     .plan-wk { font-size:12px; font-weight:800; color:var(--acc); text-transform:uppercase; }
     .plan-run { font-size:13.5px; font-weight:700; margin:3px 0; }
     .plan-str { font-size:12px; color:var(--dim); }
-    .u-block { margin-bottom:18px; }
-    .u-block:last-child { margin-bottom:0; }
+    .u-block { margin-bottom:18px; } .u-block:last-child { margin-bottom:0; }
     .u-head { font-weight:700; font-size:15px; color:var(--acc); margin-bottom:4px; }
     .u-desc { font-size:13.5px; color:var(--dim); line-height:1.55; margin:0; white-space:pre-line; }
     .nav { position:fixed; bottom:0; left:0; right:0; z-index:99; background:var(--card); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(5,1fr); padding:10px 0 14px; }
@@ -69,11 +62,9 @@
 </head>
 <body>
 <div class="wrap">
-  <!-- PAGINA 1: DASHBOARD -->
   <div id="p-dash" class="pg on">
-    <div class="top"><span class="tag">STRONG VIKING 19 KM • V19.1</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
-    <h1>Dashboard</h1>
-    <div class="sub">Wijchen Beast • 10 april 2027</div>
+    <div class="top"><span class="tag">STRONG VIKING 19 KM • V20</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
+    <h1>Dashboard</h1><div class="sub">Wijchen Beast • 10 april 2027</div>
     <div class="box"><div class="ttl">Aftellen tot de start</div>
       <div class="cd"><div><b id="d">0</b><span>Dagen</span></div><div><b id="h">0</b><span>Uren</span></div><div><b id="m">0</b><span>Min</span></div><div><b id="s">0</b><span>Sec</span></div></div>
     </div>
@@ -96,19 +87,15 @@
     </div>
   </div>
 
-  <!-- PAGINA 2: PLANNING -->
   <div id="p-plan" class="pg">
     <div class="top"><span class="tag">19-WEKEN ROADMAP</span></div>
-    <h1>Trainingsplanning</h1>
-    <div class="sub">Van nu tot 10 april 2027 • Vink afgeronde weken af</div>
+    <h1>Trainingsplanning</h1><div class="sub">Van nu tot 10 april 2027 • Vink afgeronde weken af</div>
     <div id="plist"></div>
   </div>
 
-  <!-- PAGINA 3: HARDLOPEN -->
   <div id="p-run" class="pg">
     <div class="top"><span class="tag">HARDLOPEN</span></div>
-    <h1>Hardloop Logboek</h1>
-    <div class="sub">Log je afstand, tijd, pace en inspanningszone</div>
+    <h1>Hardloop Logboek</h1><div class="sub">Log je afstand, tijd, pace en inspanningszone</div>
     <div class="box">
       <div class="g2">
         <div><label>Datum</label><input type="date" id="r-date"></div>
@@ -158,14 +145,14 @@
 </div>
 
 <div class="nav">
-  <button type="button" class="nbtn on" data-pg="dash"><span style="font-size:18px;">📊</span>Dashboard</button>
-  <button type="button" class="nbtn on" data-pg="dash"><span style="font-size:18px;">📅</span>Planning</button>
-  <button type="button" class="nbtn" data-pg="run"><span style="font-size:18px;">🏃</span>Hardlopen</button>
-  <button type="button" class="nbtn" data-pg="work"><span style="font-size:18px;">🏋️</span>Oefeningen</button>
-  <button type="button" class="nbtn" data-pg="info"><span style="font-size:18px;">📖</span>Uitleg</button>
+  <button type="button" class="nbtn on" data-pg="dash"><span style="font-size:17px;">📊</span>Dashboard</button>
+  <button type="button" class="nbtn" data-pg="plan"><span style="font-size:17px;">📅</span>Planning</button>
+  <button type="button" class="nbtn" data-pg="run"><span style="font-size:17px;">🏃</span>Hardlopen</button>
+  <button type="button" class="nbtn" data-pg="work"><span style="font-size:17px;">🏋️</span>Oefeningen</button>
+  <button type="button" class="nbtn" data-pg="info"><span style="font-size:17px;">📖</span>Uitleg</button>
 </div>
 
-<script>
+  <script>
 (function() {
   var navBtns = document.querySelectorAll('.nbtn');
   navBtns.forEach(function(btn) {
@@ -195,7 +182,7 @@
     { id: 'w3', t: '3. Hardlopen: Rustige duurloop (praattempo)' },
     { id: 'w4', t: '4. Thuis: 6 kg Kettlebell & enkel/knie balans' }
   ];
-  var wd = JSON.parse(localStorage.getItem('sv19_w') || '{}');
+  var wd = JSON.parse(localStorage.getItem('sv20_w') || '{}');
   function drawW() {
     var el = document.getElementById('wlist'); el.innerHTML = '';
     wt.forEach(function(x) {
@@ -203,13 +190,12 @@
       var sp = document.createElement('span'); sp.style.fontSize = '14px'; sp.textContent = x.t;
       var b = document.createElement('button'); b.type = 'button';
       b.className = 'chk' + (wd[x.id] ? ' ok' : ''); b.textContent = '✓';
-      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv19_w', JSON.stringify(wd)); drawW(); });
+      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv20_w', JSON.stringify(wd)); drawW(); });
       d.appendChild(sp); d.appendChild(b); el.appendChild(d);
     });
   }
-  document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv19_w', '{}'); drawW(); });
+  document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv20_w', '{}'); drawW(); });
 
-  // 19-Weken Planning
   var planPhases = [
     { phase: 'Fase 1 • Pezen & Gewrichten Laten Wennen (Nu – begin jan)', weeks: [
       { id: 'wk1', lbl: 'Week 1 (30 nov - 6 dec)', run: 'Pas starten als enkel & knie 100% pijnvrij zijn! 2x 25-30 min (4 min joggen / 2 min wandelen)', str: '2x kracht (RPE 7): focus techniek, kuitheffen & eenbenige balans' },
@@ -237,7 +223,7 @@
       { id: 'wk19', lbl: 'Week 19 (5 - 10 apr • RACEWEEK)', run: 'Ma/Di: 1x 25 min heel rustig loslopen. Za 10 apr: STRONG VIKING 19 KM!', str: 'Alleen mobiliteit & rekken. Zorg voor goede slaap en koolhydraten.' }
     ]}
   ];
-  var pd = JSON.parse(localStorage.getItem('sv19_p') || '{}');
+  var pd = JSON.parse(localStorage.getItem('sv20_p') || '{}');
   function drawPlan() {
     var el = document.getElementById('plist'); el.innerHTML = '';
     planPhases.forEach(function(ph) {
@@ -246,23 +232,16 @@
       box.appendChild(ttl);
       ph.weeks.forEach(function(w) {
         var isDone = !!pd[w.id];
-        var item = document.createElement('div');
-        item.className = 'plan-item' + (isDone ? ' done-wk' : '');
+        var item = document.createElement('div'); item.className = 'plan-item' + (isDone ? ' done-wk' : '');
         var info = document.createElement('div');
         var wkDiv = document.createElement('div'); wkDiv.className = 'plan-wk'; wkDiv.textContent = w.lbl;
         var runDiv = document.createElement('div'); runDiv.className = 'plan-run'; runDiv.textContent = '🏃 ' + w.run;
         var strDiv = document.createElement('div'); strDiv.className = 'plan-str'; strDiv.textContent = '🏋️ ' + w.str;
         info.appendChild(wkDiv); info.appendChild(runDiv); info.appendChild(strDiv);
-
         var btn = document.createElement('button'); btn.type = 'button';
         btn.className = 'chk' + (isDone ? ' ok' : ''); btn.textContent = '✓';
-        btn.addEventListener('click', function() {
-          pd[w.id] = !pd[w.id];
-          localStorage.setItem('sv19_p', JSON.stringify(pd));
-          drawPlan();
-        });
-        item.appendChild(info); item.appendChild(btn);
-        box.appendChild(item);
+        btn.addEventListener('click', function() { pd[w.id] = !pd[w.id]; localStorage.setItem('sv20_p', JSON.stringify(pd)); drawPlan(); });
+        item.appendChild(info); item.appendChild(btn); box.appendChild(item);
       });
       el.appendChild(box);
     });
@@ -270,8 +249,8 @@
 
   var td = new Date().toISOString().slice(0, 10);
   document.getElementById('r-date').value = td;
-  var shoe = JSON.parse(localStorage.getItem('sv19_shoe') || '{"name":"Nieuwe wegschoenen","km":0}');
-  var runs = JSON.parse(localStorage.getItem('sv19_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53","zone":"z3"}]');
+  var shoe = JSON.parse(localStorage.getItem('sv20_shoe') || '{"name":"Nieuwe wegschoenen","km":0}');
+  var runs = JSON.parse(localStorage.getItem('sv20_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53","zone":"z3"}]');
   var zoneLabels = { z1: 'Zone 1 • Herstel', z2: 'Zone 2 • Praattempo', z3: 'Zone 3 • Tempo', z4: 'Zone 4 • Zwaar', z5: 'Zone 5 • Maximaal' };
 
   function drawShoe() {
@@ -283,13 +262,11 @@
     bar.style.width = pct + '%';
     bar.style.background = k > 700 ? 'var(--red)' : (k > 550 ? 'var(--yel)' : 'var(--grn)');
   }
-
   document.getElementById('btn-new-shoe').addEventListener('click', function() {
     var nm = prompt('Naam van je nieuwe schoenen (bijv. Brooks Ghost 16 of Salomon Speedcross 6):', '');
     if (nm === null) return;
     shoe = { name: nm.trim() || 'Nieuwe schoenen', km: 0 };
-    localStorage.setItem('sv19_shoe', JSON.stringify(shoe));
-    drawShoe();
+    localStorage.setItem('sv20_shoe', JSON.stringify(shoe)); drawShoe();
   });
 
   function calcPace() {
@@ -315,25 +292,18 @@
       var d = document.createElement('div'); d.className = 'ritem';
       var info = document.createElement('div');
       var dtDiv = document.createElement('div'); dtDiv.style.cssText = 'font-size:11px;color:var(--dim);'; dtDiv.textContent = r.date;
-     var stDiv = document.createElement('div'); stDiv.style.cssText = 'font-weight:700;font-size:14px;';
-var kmSp = document.createElement('span'); kmSp.style.color = 'var(--acc)'; kmSp.textContent = r.km + ' km';
+      var stDiv = document.createElement('div'); stDiv.style.cssText = 'font-weight:700;font-size:14px;';
+      var kmSp = document.createElement('span'); kmSp.style.color = 'var(--acc)'; kmSp.textContent = r.km + ' km';
 stDiv.appendChild(kmSp); stDiv.appendChild(document.createTextNode(' • ' + r.time + ' • ' + r.pace + '/km'));
 info.appendChild(dtDiv); info.appendChild(stDiv);
-if (r.zone && zoneLabels[r.zone]) {
-var zb = document.createElement('div'); zb.className = 'zbadge ' + r.zone; zb.textContent = zoneLabels[r.zone];
-info.appendChild(zb);
-}
+if (r.zone && zoneLabels[r.zone]) { var zb = document.createElement('div'); zb.className = 'zbadge ' + r.zone; zb.textContent = zoneLabels[r.zone]; info.appendChild(zb); }
 var x = document.createElement('button'); x.type = 'button'; x.textContent = '×';
 x.style.cssText = 'background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;';
 x.addEventListener('click', function() {
 var remKm = parseFloat(r.km) || 0;
 runs = runs.filter(function(i) { return i.id !== r.id; });
-localStorage.setItem('sv19_r', JSON.stringify(runs));
-if (shoe.km >= remKm) {
-shoe.km = Math.max(0, (parseFloat(shoe.km) || 0) - remKm);
-localStorage.setItem('sv19_shoe', JSON.stringify(shoe));
-drawShoe();
-}
+localStorage.setItem('sv20_r', JSON.stringify(runs));
+if (shoe.km >= remKm) { shoe.km = Math.max(0, (parseFloat(shoe.km) || 0) - remKm); localStorage.setItem('sv20_shoe', JSON.stringify(shoe)); drawShoe(); }
 drawR();
 });
 d.appendChild(info); d.appendChild(x); h.appendChild(d);
@@ -349,8 +319,7 @@ var col = document.createElement('div'); col.className = 'col';
 var topLbl = document.createElement('span'); topLbl.style.cssText = 'font-size:11px;font-weight:700;margin-bottom:4px;'; topLbl.textContent = r.km;
 var bar = document.createElement('div'); bar.className = 'bar'; bar.style.height = pct + '%';
 var botLbl = document.createElement('span'); botLbl.style.cssText = 'font-size:10px;color:var(--dim);margin-top:4px;'; botLbl.textContent = r.date.slice(5);
-col.appendChild(topLbl); col.appendChild(bar); col.appendChild(botLbl);
-ch.appendChild(col);
+col.appendChild(topLbl); col.appendChild(bar); col.appendChild(botLbl); ch.appendChild(col);
 });
 }
 document.getElementById('btn-add-run').addEventListener('click', function() {
@@ -358,136 +327,144 @@ var dt = document.getElementById('r-date').value, km = parseFloat(document.getEl
 var tm = document.getElementById('r-time').value, pc = document.getElementById('r-pace').value, zn = document.getElementById('r-zone').value;
 if (!km) return alert('Vul km in');
 runs.unshift({ id: Date.now(), date: dt, km: km, time: tm || '-', pace: pc || '-', zone: zn });
-localStorage.setItem('sv19_r', JSON.stringify(runs));
-shoe.km = (parseFloat(shoe.km) || 0) + km;
-localStorage.setItem('sv19_shoe', JSON.stringify(shoe));
-drawShoe();
+localStorage.setItem('sv20_r', JSON.stringify(runs));
+shoe.km = (parseFloat(shoe.km) || 0) + km; localStorage.setItem('sv20_shoe', JSON.stringify(shoe)); drawShoe();
 document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
 drawR();
 });
-var ti = null, tr = 60;
-function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
-document.getElementById('t-in').addEventListener('input', function() { if (!ti) document.getElementById('t-out').textContent = fmt(parseInt(this.value, 10) || 0); });
-document.getElementById('btn-t-start').addEventListener('click', function() {
-clearInterval(ti); tr = parseInt(document.getElementById('t-in').value, 10) || 60;
-document.getElementById('t-out').style.color = 'var(--acc)'; document.getElementById('t-out').textContent = fmt(tr);
-ti = setInterval(function() { tr--; document.getElementById('t-out').textContent = fmt(Math.max(0, tr)); if (tr <= 0) { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; } }, 1000);
-});
-document.getElementById('btn-t-stop').addEventListener('click', function() { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; document.getElementById('t-out').textContent = fmt(parseInt(document.getElementById('t-in').value, 10) || 60); });
-var exs = {
-g: [
-{ id: 'g1', n: 'Dead Hang (optrekstang)', r: '3 × 20-40 sec' },
-{ id: 'g2', n: 'Pull-ups / Lat Pulldown', r: '3 × 8-10 reps' },
-{ id: 'g3', n: 'Goblet Squat / Leg Press', r: '3 × 10-12 reps' },
-{ id: 'g4', n: "Farmer's Carry", r: '3 × 30-40m' },
-{ id: 'g5', n: 'Inverted / Seated Row', r: '3 × 10-12 reps' },
-{ id: 'g6', n: 'Staande Calf Raises', r: '3 × 12-15 reps' }
-],
-h: [
-{ id: 'h1', n: 'Single-Leg RDL (6 kg KB)', r: '3 × 8-10 p/been' },
-{ id: 'h2', n: 'Reverse Lunges (6 kg KB)', r: '3 × 10 p/been' },
-{ id: 'h3', n: 'Kettlebell Halo (6 kg)', r: '3 × 8 L + 8 R' },
-{ id: 'h4', n: 'Push-ups', r: '3 × 10-15 reps' },
-{ id: 'h5', n: 'Single-Leg Glute Bridge', r: '3 × 12 p/been' },
-{ id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
-]
-};
-var ctab = 'g';
-var est = JSON.parse(localStorage.getItem('sv19_e') || '{}');
-var prevEst = JSON.parse(localStorage.getItem('sv19_prev') || '{}');
-document.getElementById('st-g').addEventListener('click', function() { ctab = 'g'; this.classList.add('on'); document.getElementById('st-h').classList.remove('on'); drawE(); });
-document.getElementById('st-h').addEventListener('click', function() { ctab = 'h'; this.classList.add('on'); document.getElementById('st-g').classList.remove('on'); drawE(); });
-function drawE() {
-var el = document.getElementById('elist'); el.innerHTML = '';
-exs[ctab].forEach(function(e) {
-var s = est[e.id] || { s: '', r: '', w: '', ok: false };
-var p = prevEst[e.id];
-var b = document.createElement('div'); b.className = 'box';
-var hd = document.createElement('div'); hd.className = 'ttl'; hd.style.marginBottom = '2px';
-var nSp = document.createElement('span'); nSp.textContent = e.n;
-var rSp = document.createElement('span'); rSp.style.cssText = 'font-size:11px;color:var(--dim);'; rSp.textContent = e.r;
-hd.appendChild(nSp); hd.appendChild(rSp); b.appendChild(hd);
-if (p && (p.w || p.r || p.s)) {
-var pb = document.createElement('div'); pb.className = 'prev-badge';
-var txt = 'Vorige keer: ' + (p.s ? p.s + ' sets' : '') + (p.r ? ' × ' + p.r + ' reps' : '') + (p.w ? ' @ ' + p.w + ' kg' : '');
-pb.textContent = txt.trim(); b.appendChild(pb);
-}
-var g = document.createElement('div'); g.className = 'exin';
-var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s || '';
-i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv19_e', JSON.stringify(est)); });
-var i2 = document.createElement('input'); i2.placeholder = 'Reps'; i2.value = s.r || '';
-i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv19_e', JSON.stringify(est)); });
-var i3 = document.createElement('input'); i3.placeholder = 'Kg'; i3.value = s.w || '';
-i3.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].w = i3.value; localStorage.setItem('sv19_e', JSON.stringify(est)); });
-var k = document.createElement('button'); k.type = 'button'; k.className = 'chk' + (s.ok ? ' ok' : '');
-k.style.width = '42px'; k.style.height = '40px'; k.textContent = '✓';
-k.addEventListener('click', function() {
-est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok;
-if (est[e.id].ok && (est[e.id].w || est[e.id].r || est[e.id].s)) {
-prevEst[e.id] = { s: est[e.id].s || '', r: est[e.id].r || '', w: est[e.id].w || '' };
-localStorage.setItem('sv19_prev', JSON.stringify(prevEst));
-}
-localStorage.setItem('sv19_e', JSON.stringify(est)); drawE();
-});
-g.appendChild(i1); g.appendChild(i2); g.appendChild(i3); g.appendChild(k);
-b.appendChild(g); el.appendChild(b);
-});
-}
-document.getElementById('btn-reset-e').addEventListener('click', function() {
-Object.keys(est).forEach(function(k) {
-if (est[k].w || est[k].r || est[k].s) { prevEst[k] = { s: est[k].s || '', r: est[k].r || '', w: est[k].w || '' }; }
-est[k].ok = false;
-});
-localStorage.setItem('sv19_prev', JSON.stringify(prevEst)); localStorage.setItem('sv19_e', JSON.stringify(est)); drawE();
-});
-document.getElementById('btn-export').addEventListener('click', function() {
-var backup = { version: 'v19', date: new Date().toISOString(), week: wd, plan: pd, shoe: shoe, runs: runs, exercises: est, previous: prevEst };
-var blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
-var url = URL.createObjectURL(blob);
-var a = document.createElement('a'); a.href = url; a.download = 'strong-viking-backup-' + td + '.json';
-document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-});
-document.getElementById('btn-import').addEventListener('click', function() { document.getElementById('file-import').click(); });
-document.getElementById('file-import').addEventListener('change', function(ev) {
-var file = ev.target.files.item(0);
-if (!file) return;
-var reader = new FileReader();
-reader.onload = function(e) {
-try {
-var data = JSON.parse(e.target.result);
-if (data.week) { wd = data.week; localStorage.setItem('sv19_w', JSON.stringify(wd)); }
-if (data.plan) { pd = data.plan; localStorage.setItem('sv19_p', JSON.stringify(pd)); }
-if (data.shoe) { shoe = data.shoe; localStorage.setItem('sv19_shoe', JSON.stringify(shoe)); }
-if (data.runs) { runs = data.runs; localStorage.setItem('sv19_r', JSON.stringify(runs)); }
-if (data.exercises) { est = data.exercises; localStorage.setItem('sv19_e', JSON.stringify(est)); }
-if (data.previous) { prevEst = data.previous; localStorage.setItem('sv19_prev', JSON.stringify(prevEst)); }
-drawW(); drawPlan(); drawShoe(); drawR(); drawE();
-alert('Back-up succesvol hersteld!');
-} catch (err) { alert('Ongeldig back-up bestand.'); }
-};
-reader.readAsText(file);
-});
-var uitlegData = [
-{ cat: '🌬️ Ademhaling tijdens het hardlopen', items: [
-{ t: '1. Buikademhaling', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.' },
-{ t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.' },
-{ t: '3. Neus én mond + praattest', d: 'Adem tegelijk door neus en licht geopende mond. Tijdens duurlopen moet je nog makkelijk korte zinnen kunnen uitspreken.' }
-]},
-{ cat: '🏋️ Sportschool Oefeningen', items: [
-{ t: 'Dead Hang', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.' },
-{ t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.' },
-{ t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).' },
-{ t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.' },
-{ t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.' },
-{ t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.' }
-]},
-{ cat: '💪 Thuis Oefeningen (6 kg KB)', items: [
-{ t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.' },
-{ t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.' },
-{ t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.' },
-{ t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.' },
-{ t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.' },
-{ t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen.\nBurpees: borst naar grond, opspringen.\nPlank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.' }
+---
+
+### Blok 4 van 4: JavaScript Deel B — Oefeningen, Back-up & Uitleg (plak direct onder Blok 3)
+```html
+  var ti = null, tr = 60;
+  function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+  document.getElementById('t-in').addEventListener('input', function() { if (!ti) document.getElementById('t-out').textContent = fmt(parseInt(this.value, 10) || 0); });
+  document.getElementById('btn-t-start').addEventListener('click', function() {
+    clearInterval(ti); tr = parseInt(document.getElementById('t-in').value, 10) || 60;
+    document.getElementById('t-out').style.color = 'var(--acc)'; document.getElementById('t-out').textContent = fmt(tr);
+    ti = setInterval(function() { tr--; document.getElementById('t-out').textContent = fmt(Math.max(0, tr)); if (tr <= 0) { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; } }, 1000);
+  });
+  document.getElementById('btn-t-stop').addEventListener('click', function() { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; document.getElementById('t-out').textContent = fmt(parseInt(document.getElementById('t-in').value, 10) || 60); });
+
+  var exs = {
+    g: [
+      { id: 'g1', n: 'Dead Hang (optrekstang)', r: '3 × 20-40 sec' },
+      { id: 'g2', n: 'Pull-ups / Lat Pulldown', r: '3 × 8-10 reps' },
+      { id: 'g3', n: 'Goblet Squat / Leg Press', r: '3 × 10-12 reps' },
+      { id: 'g4', n: "Farmer's Carry", r: '3 × 30-40m' },
+      { id: 'g5', n: 'Inverted / Seated Row', r: '3 × 10-12 reps' },
+      { id: 'g6', n: 'Staande Calf Raises', r: '3 × 12-15 reps' }
+    ],
+    h: [
+      { id: 'h1', n: 'Single-Leg RDL (6 kg KB)', r: '3 × 8-10 p/been' },
+      { id: 'h2', n: 'Reverse Lunges (6 kg KB)', r: '3 × 10 p/been' },
+      { id: 'h3', n: 'Kettlebell Halo (6 kg)', r: '3 × 8 L + 8 R' },
+      { id: 'h4', n: 'Push-ups', r: '3 × 10-15 reps' },
+      { id: 'h5', n: 'Single-Leg Glute Bridge', r: '3 × 12 p/been' },
+      { id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
+    ]
+  };
+  var ctab = 'g';
+  var est = JSON.parse(localStorage.getItem('sv20_e') || '{}');
+  var prevEst = JSON.parse(localStorage.getItem('sv20_prev') || '{}');
+  document.getElementById('st-g').addEventListener('click', function() { ctab = 'g'; this.classList.add('on'); document.getElementById('st-h').classList.remove('on'); drawE(); });
+  document.getElementById('st-h').addEventListener('click', function() { ctab = 'h'; this.classList.add('on'); document.getElementById('st-g').classList.remove('on'); drawE(); });
+
+  function drawE() {
+    var el = document.getElementById('elist'); el.innerHTML = '';
+    exs[ctab].forEach(function(e) {
+      var s = est[e.id] || { s: '', r: '', w: '', ok: false };
+      var p = prevEst[e.id];
+      var b = document.createElement('div'); b.className = 'box';
+      var hd = document.createElement('div'); hd.className = 'ttl'; hd.style.marginBottom = '2px';
+      var nSp = document.createElement('span'); nSp.textContent = e.n;
+      var rSp = document.createElement('span'); rSp.style.cssText = 'font-size:11px;color:var(--dim);'; rSp.textContent = e.r;
+      hd.appendChild(nSp); hd.appendChild(rSp); b.appendChild(hd);
+      if (p && (p.w || p.r || p.s)) {
+        var pb = document.createElement('div'); pb.className = 'prev-badge';
+        var txt = 'Vorige keer: ' + (p.s ? p.s + ' sets' : '') + (p.r ? ' × ' + p.r + ' reps' : '') + (p.w ? ' @ ' + p.w + ' kg' : '');
+        pb.textContent = txt.trim(); b.appendChild(pb);
+      }
+      var g = document.createElement('div'); g.className = 'exin';
+      var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s || '';
+      i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv20_e', JSON.stringify(est)); });
+      var i2 = document.createElement('input'); i2.placeholder = 'Reps'; i2.value = s.r || '';
+      i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv20_e', JSON.stringify(est)); });
+      var i3 = document.createElement('input'); i3.placeholder = 'Kg'; i3.value = s.w || '';
+      i3.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].w = i3.value; localStorage.setItem('sv20_e', JSON.stringify(est)); });
+      var k = document.createElement('button'); k.type = 'button'; k.className = 'chk' + (s.ok ? ' ok' : '');
+      k.style.width = '42px'; k.style.height = '40px'; k.textContent = '✓';
+      k.addEventListener('click', function() {
+        est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok;
+        if (est[e.id].ok && (est[e.id].w || est[e.id].r || est[e.id].s)) {
+          prevEst[e.id] = { s: est[e.id].s || '', r: est[e.id].r || '', w: est[e.id].w || '' };
+          localStorage.setItem('sv20_prev', JSON.stringify(prevEst));
+        }
+        localStorage.setItem('sv20_e', JSON.stringify(est)); drawE();
+      });
+      g.appendChild(i1); g.appendChild(i2); g.appendChild(i3); g.appendChild(k);
+      b.appendChild(g); el.appendChild(b);
+    });
+  }
+
+  document.getElementById('btn-reset-e').addEventListener('click', function() {
+    Object.keys(est).forEach(function(k) {
+      if (est[k].w || est[k].r || est[k].s) { prevEst[k] = { s: est[k].s || '', r: est[k].r || '', w: est[k].w || '' }; }
+      est[k].ok = false;
+    });
+    localStorage.setItem('sv20_prev', JSON.stringify(prevEst)); localStorage.setItem('sv20_e', JSON.stringify(est)); drawE();
+  });
+
+  document.getElementById('btn-export').addEventListener('click', function() {
+    var backup = { version: 'v20', date: new Date().toISOString(), week: wd, plan: pd, shoe: shoe, runs: runs, exercises: est, previous: prevEst };
+    var blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = 'strong-viking-backup-' + td + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('btn-import').addEventListener('click', function() { document.getElementById('file-import').click(); });
+  document.getElementById('file-import').addEventListener('change', function(ev) {
+    var file = ev.target.files.item(0);
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        var data = JSON.parse(e.target.result);
+        if (data.week) { wd = data.week; localStorage.setItem('sv20_w', JSON.stringify(wd)); }
+        if (data.plan) { pd = data.plan; localStorage.setItem('sv20_p', JSON.stringify(pd)); }
+        if (data.shoe) { shoe = data.shoe; localStorage.setItem('sv20_shoe', JSON.stringify(shoe)); }
+        if (data.runs) { runs = data.runs; localStorage.setItem('sv20_r', JSON.stringify(runs)); }
+        if (data.exercises) { est = data.exercises; localStorage.setItem('sv20_e', JSON.stringify(est)); }
+        if (data.previous) { prevEst = data.previous; localStorage.setItem('sv20_prev', JSON.stringify(prevEst)); }
+        drawW(); drawPlan(); drawShoe(); drawR(); drawE();
+        alert('Back-up succesvol hersteld!');
+      } catch (err) { alert('Ongeldig back-up bestand.'); }
+    };
+    reader.readAsText(file);
+  });
+
+  var uitlegData = [
+    { cat: '🌬️ Ademhaling tijdens het hardlopen', items: [
+      { t: '1. Buikademhaling', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.' },
+      { t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.' },
+      { t: '3. Neus én mond + praattest', d: 'Adem tegelijk door neus en licht geopende mond. Tijdens duurlopen moet je nog makkelijk korte zinnen kunnen uitspreken.' }
+    ]},
+    { cat: '🏋️ Sportschool Oefeningen', items: [
+      { t: 'Dead Hang', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.' },
+      { t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.' },
+      { t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).' },
+      { t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.' },
+      { t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.' },
+      { t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.' }
+    ]},
+    { cat: '💪 Thuis Oefeningen (6 kg KB)', items: [
+      { t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.' },
+      { t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.' },
+      { t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.' },
+      { t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.' },
+      { t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.' },
+      { t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen.\nBurpees: borst naar grond, opspringen.\nPlank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.' }
 ]}
 ];
 var ulist = document.getElementById('ulist');
