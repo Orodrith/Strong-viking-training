@@ -246,26 +246,26 @@ g.appendChild(i1); g.appendChild(i2); g.appendChild(k); b.appendChild(g); el.app
 }
 document.getElementById('btn-reset-e').addEventListener('click', function() { Object.keys(est).forEach(function(k) { est[k].ok = false; }); localStorage.setItem('sv13_e', JSON.stringify(est)); drawE(); });
 var uitlegData = [
-{ cat: '🌬️ Ademhaling tijdens het hardlopen'\n, items: [
-{ t: '1. Buikademhaling', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.' },
-{ t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.' },
+{ cat: '🌬️ Ademhaling tijdens het hardlopen\n\n', items: [
+{ t: '1. Buikademhaling\n\n', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.\n' },
+{ t: '2. Het 3:2-ritme', d: 'Adem 3 voetstappen lang rustig in en 2 voetstappen lang uit. Door dit oneven ritme wissel je steeds van landingsbeen bij het uitademen en verdeel je de schokbelasting op je knieën en enkels.\n' },
 { t: '3. Neus én mond + praattest', d: 'Adem tegelijk door neus en licht geopende mond. Tijdens duurlopen moet je nog makkelijk korte zinnen kunnen uitspreken.' }
 ]},
-{ cat: '🏋️ Uitleg Sportschool Oefeningen', items: [
-{ t: 'Dead Hang', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.' },
-{ t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.' },
-{ t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).' },
-{ t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.' },
-{ t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.' },
-{ t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.' }
+{ cat: '🏋️ Uitleg Sportschool Oefeningen\n\n', items: [
+{ t: 'Dead Hang\n', d: 'Pak de optrekstang op schouderbreedte vast, schouderbladen licht omlaag (weg van je oren) en buik strak. Traint gripkracht voor monkeybars.\n' },
+{ t: 'Pull-ups / Lat Pulldown', d: 'Trek je borst richting de stang door je ellebogen omlaag en naar achteren te duwen. Laat gecontroleerd zakken.\n' },
+{ t: 'Goblet Squat / Leg Press', d: 'Voeten op schouderbreedte, zak door je heupen en houd je knieën in lijn met je tweede teen (niet naar binnen laten zakken).\n' },
+{ t: "Farmer's Carry", d: 'Loop rechtop met zware dumbbells, schouders naar achteren en romp strak. Traint grip, core en enkelstabiliteit.\n' },
+{ t: 'Inverted / Seated Row', d: 'Rug recht, trek het handvat of je borst naar de stang en knijp je schouderbladen achterin samen.\n' },
+{ t: 'Staande Calf Raises', d: 'Sta met de ballen van je voeten op een verhoging, laat je hakken rustig zakken en duw jezelf hoog op je tenen voor sterke enkels.\n' }
 ]},
-{ cat: '💪 Uitleg Thuis Oefeningen (6 kg KB)', items: [
-{ t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.' },
-{ t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.' },
-{ t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.' },
-{ t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.' },
-{ t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.' },
-{ t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen. Burpees: borst naar grond, opspringen. Plank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.' }
+{ cat: '💪 Uitleg Thuis Oefeningen (6 kg KB)\n\n', items: [
+{ t: 'Single-Leg RDL (6 kg KB)', d: 'Sta op één licht gebogen been met de 6 kg KB in de tegenovergestelde hand. Scharnier met rechte rug vanuit je heup naar voren.\n' },
+{ t: 'Reverse Lunges (6 kg KB)', d: 'Houd de KB tegen je borst, stap naar achteren en zak tot beide knieën in 90 graden zijn. Ontziet je knieschijf.\n' },
+{ t: 'Kettlebell Halo', d: 'Draai de 6 kg KB rustig rondom je hoofd terwijl je buik en billen strak aangespannen blijven.\n' },
+{ t: 'Push-ups', d: 'Handen iets breder dan schouderbreedte, lichaam in één rechte plank en borst richting de grond.\n' },
+{ t: 'Single-Leg Glute Bridge', d: 'Lig op je rug met één voet op de grond, duw je heupen omhoog vanuit je hak en span je bilspier bovenaan aan.\n' },
+{ t: 'Finisher (Swings + Burpees + Plank)', d: 'Swings: stoot explosief vanuit je heupen. Burpees: borst naar grond, opspringen. Plank Pull-Through: schuif de KB vanuit hoge plank onder je door van links naar rechts.\n' }
 ]}
 ];
 var ulist = document.getElementById('ulist');
