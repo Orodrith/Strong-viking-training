@@ -6,8 +6,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#0b0f19" />
   <title>Strong Viking 19km</title>
-   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0f19'/%3E%3Crect x='4' y='4' width='92' height='92' rx='18' fill='none' stroke='%23f97316' stroke-width='6'/%3E%3Ctext x='50' y='48' font-family='sans-serif' font-weight='900' font-size='32' fill='%23f97316' text-anchor='middle'%3ESV%3C/text%3E%3Ctext x='50' y='76' font-family='sans-serif' font-weight='800' font-size='20' fill='%23f8fafc' text-anchor='middle'%3E19KM%3C/text%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0f19'/%3E%3Crect x='4' y='4' width='92' height='92' rx='18' fill='none' stroke='%23f97316' stroke-width='6'/%3E%3Ctext x='50' y='48' font-family='sans-serif' font-weight='900' font-size='32' fill='%23f97316' text-anchor='middle'%3ESV%3C/text%3E%3Ctext x='50' y='76' font-family='sans-serif' font-weight='800' font-size='20' fill='%23f8fafc' text-anchor='middle'%3E19KM%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0f19'/%3E%3Crect x='4' y='4' width='92' height='92' rx='18' fill='none' stroke='%23f97316' stroke-width='6'/%3E%3Ctext x='50' y='48' font-family='sans-serif' font-weight='900' font-size='32' fill='%23f97316' text-anchor='middle'%3ESV%3C/text%3E%3Ctext x='50' y='76' font-family='sans-serif' font-weight='800' font-size='20' fill='%23f8fafc' text-anchor='middle'%3E19KM%3C/text%3E%3C/svg%3E" />
   <style>
     :root { --bg:#0b0f19; --card:#151c2c; --card2:#1e293b; --line:#2a374a; --acc:#f97316; --txt:#f8fafc; --dim:#94a3b8; --grn:#10b981; --red:#ef4444; --yel:#eab308; }
     * { box-sizing:border-box; font-family:system-ui,-apple-system,sans-serif; }
@@ -24,7 +23,7 @@
     .cd b { display:block; font-size:21px; color:var(--acc); } .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
     .wrow { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); }
     .wrow:last-child { border:none; }
-    .chk { width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:transparent; font-weight:800; cursor:pointer; }
+    .chk { width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:transparent; font-weight:800; cursor:pointer; flex-shrink:0; }
     .chk.ok { background:var(--grn); border-color:var(--grn); color:#052e16; }
     .chart { display:flex; align-items:flex-end; gap:8px; height:140px; padding-top:20px; border-bottom:1px solid var(--line); }
     .col { flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end; }
@@ -51,23 +50,28 @@
     .stab.on { border-color:var(--acc); color:var(--acc); background:rgba(249,115,22,.15); }
     .exin { display:grid; grid-template-columns:1fr 1fr 1fr 42px; gap:6px; margin-top:8px; }
     .prev-badge { display:inline-block; background:var(--bg); border:1px solid var(--line); color:var(--grn); font-size:11px; font-weight:600; padding:3px 8px; border-radius:6px; margin-top:4px; }
+    .plan-item { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .plan-item.done-wk { opacity:0.6; border-color:var(--grn); }
+    .plan-wk { font-size:12px; font-weight:800; color:var(--acc); text-transform:uppercase; }
+    .plan-run { font-size:13.5px; font-weight:700; margin:3px 0; }
+    .plan-str { font-size:12px; color:var(--dim); }
     .u-block { margin-bottom:18px; } .u-block:last-child { margin-bottom:0; }
     .u-head { font-weight:700; font-size:15px; color:var(--acc); margin-bottom:4px; }
     .u-desc { font-size:13.5px; color:var(--dim); line-height:1.55; margin:0; white-space:pre-line; }
-    .nav { position:fixed; bottom:0; left:0; right:0; z-index:99; background:var(--card); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(4,1fr); padding:10px 0 14px; }
-    .nbtn { background:none; border:none; color:var(--dim); font-size:11px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; }
+    .nav { position:fixed; bottom:0; left:0; right:0; z-index:99; background:var(--card); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(5,1fr); padding:10px 0 14px; }
+    .nbtn { background:none; border:none; color:var(--dim); font-size:10.5px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; }
     .nbtn.on { color:var(--acc); }
   </style>
 </head>
 <body>
 <div class="wrap">
   <div id="p-dash" class="pg on">
-    <div class="top"><span class="tag">STRONG VIKING 19 KM • V18</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
+    <div class="top"><span class="tag">STRONG VIKING 19 KM • V19</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
     <h1>Dashboard</h1><div class="sub">Wijchen Beast • 10 april 2027</div>
     <div class="box"><div class="ttl">Aftellen tot de start</div>
       <div class="cd"><div><b id="d">0</b><span>Dagen</span></div><div><b id="h">0</b><span>Uren</span></div><div><b id="m">0</b><span>Min</span></div><div><b id="s">0</b><span>Sec</span></div></div>
     </div>
-    <div class="box"><div class="ttl">Weekoverzicht (4 trainingen)</div><div id="wlist"></div></div>
+    <div class="box"><div class="ttl">Deze week (4 trainingen)</div><div id="wlist"></div></div>
     <div class="box"><div class="ttl"><span>Hardloop Kilometers</span><span id="tkm" style="color:var(--acc);font-size:13px;">0 km</span></div><div class="chart" id="chart"></div></div>
     <div class="box">
       <div class="ttl"><span>👟 <span id="shoe-name-lbl">Huidige schoenen</span></span><button type="button" class="sbtn" id="btn-new-shoe">+ Nieuwe schoenen</button></div>
@@ -77,13 +81,19 @@
     </div>
     <div class="box">
       <div class="ttl"><span>💾 Back-up & Gegevens</span></div>
-      <p style="font-size:12px; color:var(--dim); margin:0 0 10px 0;">Sla je runs, schoenstand en gewichten veilig op of zet een eerdere back-up terug.</p>
+      <p style="font-size:12px; color:var(--dim); margin:0 0 10px 0;">Sla je runs, schoenstand en gewichten veilig op in een bestandje of zet een eerdere back-up terug.</p>
       <div class="g2" style="margin-bottom:0;">
         <button type="button" class="sbtn" id="btn-export" style="padding:10px; text-align:center;">⬇ Exporteer back-up</button>
         <button type="button" class="sbtn" id="btn-import" style="padding:10px; text-align:center;">⬆ Importeer back-up</button>
       </div>
       <input type="file" id="file-import" accept=".json" style="display:none;" />
     </div>
+  </div>
+
+  <div id="p-plan" class="pg">
+    <div class="top"><span class="tag">19-WEKEN ROADMAP</span></div>
+    <h1>Trainingsplanning</h1><div class="sub">Van nu tot 10 april 2027 • Vink afgeronde weken af</div>
+    <div id="plist"></div>
   </div>
 
   <div id="p-run" class="pg">
@@ -145,6 +155,7 @@
 </div>
 
 <script>
+<script>
 (function() {
   var navBtns = document.querySelectorAll('.nbtn');
   navBtns.forEach(function(btn) {
@@ -174,7 +185,7 @@
     { id: 'w3', t: '3. Hardlopen: Rustige duurloop (praattempo)' },
     { id: 'w4', t: '4. Thuis: 6 kg Kettlebell & enkel/knie balans' }
   ];
-  var wd = JSON.parse(localStorage.getItem('sv18_w') || '{}');
+  var wd = JSON.parse(localStorage.getItem('sv19_w') || '{}');
   function drawW() {
     var el = document.getElementById('wlist'); el.innerHTML = '';
     wt.forEach(function(x) {
@@ -182,16 +193,75 @@
       var sp = document.createElement('span'); sp.style.fontSize = '14px'; sp.textContent = x.t;
       var b = document.createElement('button'); b.type = 'button';
       b.className = 'chk' + (wd[x.id] ? ' ok' : ''); b.textContent = '✓';
-      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv18_w', JSON.stringify(wd)); drawW(); });
+      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv19_w', JSON.stringify(wd)); drawW(); });
       d.appendChild(sp); d.appendChild(b); el.appendChild(d);
     });
   }
-  document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv18_w', '{}'); drawW(); });
+  document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv19_w', '{}'); drawW(); });
+
+  // 19-Weken Planning
+  var planPhases = [
+    { phase: 'Fase 1 • Pezen & Gewrichten Laten Wennen (Nu – begin jan)', weeks: [
+      { id: 'wk1', lbl: 'Week 1 (30 nov - 6 dec)', run: 'Pas starten als enkel & knie 100% pijnvrij zijn! 2x 25-30 min (4 min joggen / 2 min wandelen)', str: '2x kracht (RPE 7): focus techniek, kuitheffen & eenbenige balans' },
+      { id: 'wk2', lbl: 'Week 2 (7 - 13 dec)', run: '2x 30 min (5 min joggen / 2 min wandelen) in Zone 2', str: '2x kracht: stabiele basis opbouwen, nog niet tot spierfalen' },
+      { id: 'wk3', lbl: 'Week 3 (14 - 20 dec)', run: '1x 30 min (6 min jog / 1 min wandel) + 1x 35 min rustig', str: '2x kracht: dead hang tijd iets verlengen (bijv. +5 sec)' },
+      { id: 'wk4', lbl: 'Week 4 (21 - 27 dec)', run: '1x 35 min onafgebroken + 1x 40 min op praattempo', str: '2x kracht: lichte deload (1 setje minder tijdens feestdagen)' },
+      { id: 'wk5', lbl: 'Week 5 (28 dec - 3 jan)', run: '1x 35 min + 1x 45 min rustige duurloop (ca. 6 - 6,5 km)', str: '2x kracht: hervatten basisschema, lichte gewichtsverhoging' },
+      { id: 'wk6', lbl: 'Week 6 (4 - 10 jan)', run: '1x 40 min + 1x 50 min duurloop (ca. 7 km) in Zone 2', str: '2x kracht: controleer knie- en enkelgevoel na elke sessie' }
+    ]},
+    { phase: 'Fase 2 • Volume & Gripkracht Opbouwen (Jan – eind feb)', weeks: [
+      { id: 'wk7', lbl: 'Week 7 (11 - 17 jan)', run: '1x 45 min met 5x 1 min iets vlotter + 1x 8 km duurloop', str: '2x kracht: pull-ups/lat pulldown verzwaren, farmer carry 35m' },
+      { id: 'wk8', lbl: 'Week 8 (18 - 24 jan)', run: '1x 45 min ritmeloop + 1x 9 km rustige duurloop', str: '2x kracht: thuis finisher uitbreiden naar 3 strakke rondes' },
+      { id: 'wk9', lbl: 'Week 9 (25 - 31 jan)', run: '1x 50 min + 1x 9,5 km duurloop in Zone 2', str: '2x kracht: focus op gripkracht en core-stabiliteit' },
+      { id: 'wk10', lbl: 'Week 10 (1 - 7 feb)', run: 'Herstelweek: 1x 35 min + 1x 7 km rustig (pezen rust geven)', str: '2x kracht: iets lichter gewicht, focus op soepel bewegen' },
+      { id: 'wk11', lbl: 'Week 11 (8 - 14 feb)', run: '1x 50 min (met 6x 1 min versnelling) + 1x 10,5 km duurloop', str: '2x kracht: zwaardere trekkracht en lunges' },
+      { id: 'wk12', lbl: 'Week 12 (15 - 21 feb)', run: '1x 50 min + 1x 11,5 km duurloop op praattempo', str: '2x kracht: oefen hangen met 1 hand wisselen (monkeybars)' },
+      { id: 'wk13', lbl: 'Week 13 (22 - 28 feb)', run: '1x 55 min + 1x 12 km duurloop. Tip: bestel nu je modderschoenen!', str: '2x kracht: maximale opbouwweek in de sportschool' },
+      { id: 'wk14', lbl: 'Week 14 (1 - 7 mrt)', run: '1x 55 min + 1x 12,5 km duurloop (test je trailschoenen in het bos)', str: '2x kracht: behoud kracht en verhoog tempo in de finisher' }
+    ]},
+    { phase: 'Fase 3 • OCR-Specifiek & Taper (Maart – 10 april)', weeks: [
+      { id: 'wk15', lbl: 'Week 15 (8 - 14 mrt)', run: '1x 50 min (elke 10 min: 15 burpees) + 1x 13 km duurloop', str: '2x kracht: obstakel-conditie en grip uithoudingsvermogen' },
+      { id: 'wk16', lbl: 'Week 16 (15 - 21 mrt)', run: '1x 50 min (elke 10 min: 20 lunges + 10 push-ups) + 1x 14 km', str: '2x kracht: langste duurloop zit erop, focus blijft heel blijven' },
+      { id: 'wk17', lbl: 'Week 17 (22 - 28 mrt)', run: '1x 45 min + 1x 11 km duurloop (volume gaat nu rustig omlaag)', str: '2x kracht: gewicht 10-15% omlaag, explosief uitvoeren' },
+      { id: 'wk18', lbl: 'Week 18 (29 mrt - 4 apr)', run: '1x 40 min rustig + 1x 8 km op trailschoenen (check kleding/sokken)', str: '1-2x lichte kracht: geen zware benen meer, wel grip prikkelen' },
+      { id: 'wk19', lbl: 'Week 19 (5 - 10 apr • RACEWEEK)', run: 'Ma/Di: 1x 25 min heel rustig loslopen. Za 10 apr: STRONG VIKING 19 KM!', str: 'Alleen mobiliteit & rekken. Zorg voor goede slaap en koolhydraten.' }
+    ]}
+  ];
+  var pd = JSON.parse(localStorage.getItem('sv19_p') || '{}');
+  function drawPlan() {
+    var el = document.getElementById('plist'); el.innerHTML = '';
+    planPhases.forEach(function(ph) {
+      var box = document.createElement('div'); box.className = 'box';
+      var ttl = document.createElement('div'); ttl.className = 'ttl'; ttl.textContent = ph.phase;
+      box.appendChild(ttl);
+      ph.weeks.forEach(function(w) {
+        var isDone = !!pd[w.id];
+        var item = document.createElement('div');
+        item.className = 'plan-item' + (isDone ? ' done-wk' : '');
+        var info = document.createElement('div');
+        var wkDiv = document.createElement('div'); wkDiv.className = 'plan-wk'; wkDiv.textContent = w.lbl;
+        var runDiv = document.createElement('div'); runDiv.className = 'plan-run'; runDiv.textContent = '🏃 ' + w.run;
+        var strDiv = document.createElement('div'); strDiv.className = 'plan-str'; strDiv.textContent = '🏋️ ' + w.str;
+        info.appendChild(wkDiv); info.appendChild(runDiv); info.appendChild(strDiv);
+
+        var btn = document.createElement('button'); btn.type = 'button';
+        btn.className = 'chk' + (isDone ? ' ok' : ''); btn.textContent = '✓';
+        btn.addEventListener('click', function() {
+          pd[w.id] = !pd[w.id];
+          localStorage.setItem('sv19_p', JSON.stringify(pd));
+          drawPlan();
+        });
+        item.appendChild(info); item.appendChild(btn);
+        box.appendChild(item);
+      });
+      el.appendChild(box);
+    });
+  }
 
   var td = new Date().toISOString().slice(0, 10);
   document.getElementById('r-date').value = td;
-  var shoe = JSON.parse(localStorage.getItem('sv18_shoe') || '{"name":"Nieuwe wegschoenen","km":0}');
-  var runs = JSON.parse(localStorage.getItem('sv18_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53","zone":"z3"}]');
+  var shoe = JSON.parse(localStorage.getItem('sv19_shoe') || '{"name":"Nieuwe wegschoenen","km":0}');
+  var runs = JSON.parse(localStorage.getItem('sv19_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53","zone":"z3"}]');
   var zoneLabels = { z1: 'Zone 1 • Herstel', z2: 'Zone 2 • Praattempo', z3: 'Zone 3 • Tempo', z4: 'Zone 4 • Zwaar', z5: 'Zone 5 • Maximaal' };
 
   function drawShoe() {
@@ -208,7 +278,7 @@
     var nm = prompt('Naam van je nieuwe schoenen (bijv. Brooks Ghost 16 of Salomon Speedcross 6):', '');
     if (nm === null) return;
     shoe = { name: nm.trim() || 'Nieuwe schoenen', km: 0 };
-    localStorage.setItem('sv18_shoe', JSON.stringify(shoe));
+    localStorage.setItem('sv19_shoe', JSON.stringify(shoe));
     drawShoe();
   });
 
@@ -235,90 +305,86 @@
       var d = document.createElement('div'); d.className = 'ritem';
       var info = document.createElement('div');
       var dtDiv = document.createElement('div'); dtDiv.style.cssText = 'font-size:11px;color:var(--dim);'; dtDiv.textContent = r.date;
-      var stDiv = document.createElement('div'); stDiv.style.cssText = 'font-weight:700;font-size:14px;';
-      var kmSp = document.createElement('span'); kmSp.style.color = 'var(--acc)'; kmSp.textContent = r.km + ' km';
-      stDiv.appendChild(kmSp); stDiv.appendChild(document.createTextNode(' • ' + r.time + ' • ' + r.pace + '/km'));
-      info.appendChild(dtDiv); info.appendChild(stDiv);
-      if (r.zone && zoneLabels[r.zone]) {
-        var zb = document.createElement('div'); zb.className = 'zbadge ' + r.zone; zb.textContent = zoneLabels[r.zone];
-        info.appendChild(zb);
-      }
-      var x = document.createElement('button'); x.type = 'button'; x.textContent = '×';
-      x.style.cssText = 'background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;';
-      x.addEventListener('click', function() {
-        var remKm = parseFloat(r.km) || 0;
-        runs = runs.filter(function(i) { return i.id !== r.id; });
-        localStorage.setItem('sv18_r', JSON.stringify(runs));
-        if (shoe.km >= remKm) {
-          shoe.km = Math.max(0, (parseFloat(shoe.km) || 0) - remKm);
-          localStorage.setItem('sv18_shoe', JSON.stringify(shoe));
-          drawShoe();
-        }
-        drawR();
-      });
-      d.appendChild(info); d.appendChild(x); h.appendChild(d);
-    });
-
-    var ch = document.getElementById('chart'); ch.innerHTML = '';
-    var tot = runs.reduce(function(s, r) { return s + (parseFloat(r.km) || 0); }, 0);
-    document.getElementById('tkm').textContent = 'Totaal: ' + tot.toFixed(1) + ' km';
-    var rec = runs.slice(0, 7).reverse();
-    var mx = Math.max(5, Math.max.apply(null, rec.map(function(r) { return parseFloat(r.km) || 0; })));
-    rec.forEach(function(r) {
-      var pct = Math.min(100, Math.round(((parseFloat(r.km) || 0) / mx) * 100));
-      var col = document.createElement('div'); col.className = 'col';
-      var topLbl = document.createElement('span'); topLbl.style.cssText = 'font-size:11px;font-weight:700;margin-bottom:4px;'; topLbl.textContent = r.km;
-      var bar = document.createElement('div'); bar.className = 'bar'; bar.style.height = pct + '%';
-      var botLbl = document.createElement('span'); botLbl.style.cssText = 'font-size:10px;color:var(--dim);margin-top:4px;'; botLbl.textContent = r.date.slice(5);
-      col.appendChild(topLbl); col.appendChild(bar); col.appendChild(botLbl);
-      ch.appendChild(col);
-    });
-  }
-
-  document.getElementById('btn-add-run').addEventListener('click', function() {
-    var dt = document.getElementById('r-date').value, km = parseFloat(document.getElementById('r-km').value);
-    var tm = document.getElementById('r-time').value, pc = document.getElementById('r-pace').value, zn = document.getElementById('r-zone').value;
-    if (!km) return alert('Vul km in');
-    runs.unshift({ id: Date.now(), date: dt, km: km, time: tm || '-', pace: pc || '-', zone: zn });
-    localStorage.setItem('sv18_r', JSON.stringify(runs));
-    shoe.km = (parseFloat(shoe.km) || 0) + km;
-    localStorage.setItem('sv18_shoe', JSON.stringify(shoe));
-    drawShoe();
-    document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
-    drawR();
-  });
-
-  var ti = null, tr = 60;
-  function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
-  document.getElementById('t-in').addEventListener('input', function() { if (!ti) document.getElementById('t-out').textContent = fmt(parseInt(this.value, 10) || 0); });
-  document.getElementById('btn-t-start').addEventListener('click', function() {
-    clearInterval(ti); tr = parseInt(document.getElementById('t-in').value, 10) || 60;
-    document.getElementById('t-out').style.color = 'var(--acc)'; document.getElementById('t-out').textContent = fmt(tr);
-    ti = setInterval(function() { tr--; document.getElementById('t-out').textContent = fmt(Math.max(0, tr)); if (tr <= 0) { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; } }, 1000);
-  });
-  document.getElementById('btn-t-stop').addEventListener('click', function() { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; document.getElementById('t-out').textContent = fmt(parseInt(document.getElementById('t-in').value, 10) || 60); });
-
-  var exs = {
-    g: [
-      { id: 'g1', n: 'Dead Hang (optrekstang)', r: '3 × 20-40 sec' },
-      { id: 'g2', n: 'Pull-ups / Lat Pulldown', r: '3 × 8-10 reps' },
-      { id: 'g3', n: 'Goblet Squat / Leg Press', r: '3 × 10-12 reps' },
-      { id: 'g4', n: "Farmer's Carry", r: '3 × 30-40m' },
-      { id: 'g5', n: 'Inverted / Seated Row', r: '3 × 10-12 reps' },
-      { id: 'g6', n: 'Staande Calf Raises', r: '3 × 12-15 reps' }
-    ],
-    h: [
-      { id: 'h1', n: 'Single-Leg RDL (6 kg KB)', r: '3 × 8-10 p/been' },
-      { id: 'h2', n: 'Reverse Lunges (6 kg KB)', r: '3 × 10 p/been' },
-      { id: 'h3', n: 'Kettlebell Halo (6 kg)', r: '3 × 8 L + 8 R' },
-      { id: 'h4', n: 'Push-ups', r: '3 × 10-15 reps' },
-      { id: 'h5', n: 'Single-Leg Glute Bridge', r: '3 × 12 p/been' },
-      { id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
-    ]
-  };
-  var ctab = 'g';
-  var est = JSON.parse(localStorage.getItem('sv18_e') || '{}');
-var prevEst = JSON.parse(localStorage.getItem('sv18_prev') || '{}');
+     var stDiv = document.createElement('div'); stDiv.style.cssText = 'font-weight:700;font-size:14px;';
+var kmSp = document.createElement('span'); kmSp.style.color = 'var(--acc)'; kmSp.textContent = r.km + ' km';
+stDiv.appendChild(kmSp); stDiv.appendChild(document.createTextNode(' • ' + r.time + ' • ' + r.pace + '/km'));
+info.appendChild(dtDiv); info.appendChild(stDiv);
+if (r.zone && zoneLabels[r.zone]) {
+var zb = document.createElement('div'); zb.className = 'zbadge ' + r.zone; zb.textContent = zoneLabels[r.zone];
+info.appendChild(zb);
+}
+var x = document.createElement('button'); x.type = 'button'; x.textContent = '×';
+x.style.cssText = 'background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;';
+x.addEventListener('click', function() {
+var remKm = parseFloat(r.km) || 0;
+runs = runs.filter(function(i) { return i.id !== r.id; });
+localStorage.setItem('sv19_r', JSON.stringify(runs));
+if (shoe.km >= remKm) {
+shoe.km = Math.max(0, (parseFloat(shoe.km) || 0) - remKm);
+localStorage.setItem('sv19_shoe', JSON.stringify(shoe));
+drawShoe();
+}
+drawR();
+});
+d.appendChild(info); d.appendChild(x); h.appendChild(d);
+});
+var ch = document.getElementById('chart'); ch.innerHTML = '';
+var tot = runs.reduce(function(s, r) { return s + (parseFloat(r.km) || 0); }, 0);
+document.getElementById('tkm').textContent = 'Totaal: ' + tot.toFixed(1) + ' km';
+var rec = runs.slice(0, 7).reverse();
+var mx = Math.max(5, Math.max.apply(null, rec.map(function(r) { return parseFloat(r.km) || 0; })));
+rec.forEach(function(r) {
+var pct = Math.min(100, Math.round(((parseFloat(r.km) || 0) / mx) * 100));
+var col = document.createElement('div'); col.className = 'col';
+var topLbl = document.createElement('span'); topLbl.style.cssText = 'font-size:11px;font-weight:700;margin-bottom:4px;'; topLbl.textContent = r.km;
+var bar = document.createElement('div'); bar.className = 'bar'; bar.style.height = pct + '%';
+var botLbl = document.createElement('span'); botLbl.style.cssText = 'font-size:10px;color:var(--dim);margin-top:4px;'; botLbl.textContent = r.date.slice(5);
+col.appendChild(topLbl); col.appendChild(bar); col.appendChild(botLbl);
+ch.appendChild(col);
+});
+}
+document.getElementById('btn-add-run').addEventListener('click', function() {
+var dt = document.getElementById('r-date').value, km = parseFloat(document.getElementById('r-km').value);
+var tm = document.getElementById('r-time').value, pc = document.getElementById('r-pace').value, zn = document.getElementById('r-zone').value;
+if (!km) return alert('Vul km in');
+runs.unshift({ id: Date.now(), date: dt, km: km, time: tm || '-', pace: pc || '-', zone: zn });
+localStorage.setItem('sv19_r', JSON.stringify(runs));
+shoe.km = (parseFloat(shoe.km) || 0) + km;
+localStorage.setItem('sv19_shoe', JSON.stringify(shoe));
+drawShoe();
+document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
+drawR();
+});
+var ti = null, tr = 60;
+function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+document.getElementById('t-in').addEventListener('input', function() { if (!ti) document.getElementById('t-out').textContent = fmt(parseInt(this.value, 10) || 0); });
+document.getElementById('btn-t-start').addEventListener('click', function() {
+clearInterval(ti); tr = parseInt(document.getElementById('t-in').value, 10) || 60;
+document.getElementById('t-out').style.color = 'var(--acc)'; document.getElementById('t-out').textContent = fmt(tr);
+ti = setInterval(function() { tr--; document.getElementById('t-out').textContent = fmt(Math.max(0, tr)); if (tr <= 0) { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; } }, 1000);
+});
+document.getElementById('btn-t-stop').addEventListener('click', function() { clearInterval(ti); ti = null; document.getElementById('t-out').style.color = 'var(--grn)'; document.getElementById('t-out').textContent = fmt(parseInt(document.getElementById('t-in').value, 10) || 60); });
+var exs = {
+g: [
+{ id: 'g1', n: 'Dead Hang (optrekstang)', r: '3 × 20-40 sec' },
+{ id: 'g2', n: 'Pull-ups / Lat Pulldown', r: '3 × 8-10 reps' },
+{ id: 'g3', n: 'Goblet Squat / Leg Press', r: '3 × 10-12 reps' },
+{ id: 'g4', n: "Farmer's Carry", r: '3 × 30-40m' },
+{ id: 'g5', n: 'Inverted / Seated Row', r: '3 × 10-12 reps' },
+{ id: 'g6', n: 'Staande Calf Raises', r: '3 × 12-15 reps' }
+],
+h: [
+{ id: 'h1', n: 'Single-Leg RDL (6 kg KB)', r: '3 × 8-10 p/been' },
+{ id: 'h2', n: 'Reverse Lunges (6 kg KB)', r: '3 × 10 p/been' },
+{ id: 'h3', n: 'Kettlebell Halo (6 kg)', r: '3 × 8 L + 8 R' },
+{ id: 'h4', n: 'Push-ups', r: '3 × 10-15 reps' },
+{ id: 'h5', n: 'Single-Leg Glute Bridge', r: '3 × 12 p/been' },
+{ id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
+]
+};
+var ctab = 'g';
+var est = JSON.parse(localStorage.getItem('sv19_e') || '{}');
+var prevEst = JSON.parse(localStorage.getItem('sv19_prev') || '{}');
 document.getElementById('st-g').addEventListener('click', function() { ctab = 'g'; this.classList.add('on'); document.getElementById('st-h').classList.remove('on'); drawE(); });
 document.getElementById('st-h').addEventListener('click', function() { ctab = 'h'; this.classList.add('on'); document.getElementById('st-g').classList.remove('on'); drawE(); });
 function drawE() {
@@ -338,20 +404,20 @@ pb.textContent = txt.trim(); b.appendChild(pb);
 }
 var g = document.createElement('div'); g.className = 'exin';
 var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s || '';
-i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv18_e', JSON.stringify(est)); });
+i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv19_e', JSON.stringify(est)); });
 var i2 = document.createElement('input'); i2.placeholder = 'Reps'; i2.value = s.r || '';
-i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv18_e', JSON.stringify(est)); });
+i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv19_e', JSON.stringify(est)); });
 var i3 = document.createElement('input'); i3.placeholder = 'Kg'; i3.value = s.w || '';
-i3.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].w = i3.value; localStorage.setItem('sv18_e', JSON.stringify(est)); });
+i3.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].w = i3.value; localStorage.setItem('sv19_e', JSON.stringify(est)); });
 var k = document.createElement('button'); k.type = 'button'; k.className = 'chk' + (s.ok ? ' ok' : '');
 k.style.width = '42px'; k.style.height = '40px'; k.textContent = '✓';
 k.addEventListener('click', function() {
 est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok;
 if (est[e.id].ok && (est[e.id].w || est[e.id].r || est[e.id].s)) {
 prevEst[e.id] = { s: est[e.id].s || '', r: est[e.id].r || '', w: est[e.id].w || '' };
-localStorage.setItem('sv18_prev', JSON.stringify(prevEst));
+localStorage.setItem('sv19_prev', JSON.stringify(prevEst));
 }
-localStorage.setItem('sv18_e', JSON.stringify(est)); drawE();
+localStorage.setItem('sv19_e', JSON.stringify(est)); drawE();
 });
 g.appendChild(i1); g.appendChild(i2); g.appendChild(i3); g.appendChild(k);
 b.appendChild(g); el.appendChild(b);
@@ -362,10 +428,10 @@ Object.keys(est).forEach(function(k) {
 if (est[k].w || est[k].r || est[k].s) { prevEst[k] = { s: est[k].s || '', r: est[k].r || '', w: est[k].w || '' }; }
 est[k].ok = false;
 });
-localStorage.setItem('sv18_prev', JSON.stringify(prevEst)); localStorage.setItem('sv18_e', JSON.stringify(est)); drawE();
+localStorage.setItem('sv19_prev', JSON.stringify(prevEst)); localStorage.setItem('sv19_e', JSON.stringify(est)); drawE();
 });
 document.getElementById('btn-export').addEventListener('click', function() {
-var backup = { version: 'v18', date: new Date().toISOString(), week: wd, shoe: shoe, runs: runs, exercises: est, previous: prevEst };
+var backup = { version: 'v19', date: new Date().toISOString(), week: wd, plan: pd, shoe: shoe, runs: runs, exercises: est, previous: prevEst };
 var blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
 var url = URL.createObjectURL(blob);
 var a = document.createElement('a'); a.href = url; a.download = 'strong-viking-backup-' + td + '.json';
@@ -379,12 +445,13 @@ var reader = new FileReader();
 reader.onload = function(e) {
 try {
 var data = JSON.parse(e.target.result);
-if (data.week) { wd = data.week; localStorage.setItem('sv18_w', JSON.stringify(wd)); }
-if (data.shoe) { shoe = data.shoe; localStorage.setItem('sv18_shoe', JSON.stringify(shoe)); }
-if (data.runs) { runs = data.runs; localStorage.setItem('sv18_r', JSON.stringify(runs)); }
-if (data.exercises) { est = data.exercises; localStorage.setItem('sv18_e', JSON.stringify(est)); }
-if (data.previous) { prevEst = data.previous; localStorage.setItem('sv18_prev', JSON.stringify(prevEst)); }
-drawW(); drawShoe(); drawR(); drawE();
+if (data.week) { wd = data.week; localStorage.setItem('sv19_w', JSON.stringify(wd)); }
+if (data.plan) { pd = data.plan; localStorage.setItem('sv19_p', JSON.stringify(pd)); }
+if (data.shoe) { shoe = data.shoe; localStorage.setItem('sv19_shoe', JSON.stringify(shoe)); }
+if (data.runs) { runs = data.runs; localStorage.setItem('sv19_r', JSON.stringify(runs)); }
+if (data.exercises) { est = data.exercises; localStorage.setItem('sv19_e', JSON.stringify(est)); }
+if (data.previous) { prevEst = data.previous; localStorage.setItem('sv19_prev', JSON.stringify(prevEst)); }
+drawW(); drawPlan(); drawShoe(); drawR(); drawE();
 alert('Back-up succesvol hersteld!');
 } catch (err) { alert('Ongeldig back-up bestand.'); }
 };
@@ -427,7 +494,7 @@ box.appendChild(block);
 });
 ulist.appendChild(box);
 });
-drawW(); drawShoe(); drawR(); drawE();
+drawW(); drawPlan(); drawShoe(); drawR(); drawE();
 })();
 </script>
 </body>
