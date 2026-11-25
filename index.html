@@ -27,7 +27,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Header */
     .app-header {
       background: linear-gradient(180deg, #192236 0%, #0b0f19 100%);
       padding: 20px 16px 14px 16px;
@@ -46,7 +45,6 @@
     h1 { margin: 8px 0 2px 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px; }
     .sub { font-size: 0.82rem; color: var(--text-dim); }
 
-    /* Aftelklok */
     .countdown {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
       margin-top: 16px;
@@ -58,10 +56,9 @@
     .cd-val { font-size: 1.35rem; font-weight: 800; color: var(--primary); line-height: 1.1; }
     .cd-lbl { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; margin-top: 3px; font-weight: 600; }
 
-    /* Sticky Rusttimer */
     .timer-strip {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(21, 28, 44, 0.96); backdrop-filter: blur(8px);
+      background: rgba(21, 28, 44, 0.96);
       border-bottom: 1px solid var(--border);
       padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
     }
@@ -71,12 +68,11 @@
     .timer-actions { display: flex; gap: 6px; }
     .t-btn {
       background: var(--surface-2); color: var(--text); border: 1px solid var(--border);
-      padding: 7px 11px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      padding: 8px 12px; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer;
     }
     .t-btn:active { background: var(--primary); color: #fff; }
     .t-btn.stop { background: rgba(239, 68, 68, 0.15); color: var(--red); border-color: rgba(239, 68, 68, 0.3); }
 
-    /* Container & Cards */
     .container { max-width: 540px; margin: 0 auto; padding: 16px; }
     .view { display: none; }
     .view.active { display: block; }
@@ -84,7 +80,6 @@
     .card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 16px; margin-bottom: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .card-title { font-size: 1.02rem; font-weight: 700; margin: 0 0 6px 0; color: var(--text); }
     .card-desc { font-size: 0.84rem; color: var(--text-dim); line-height: 1.45; margin: 0; }
@@ -94,7 +89,6 @@
       background: var(--surface-2); color: var(--primary);
     }
 
-    /* Weekdagen grid */
     .day-row {
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 0; border-bottom: 1px solid var(--border);
@@ -103,7 +97,6 @@
     .day-name { font-weight: 700; font-size: 0.85rem; width: 70px; color: var(--primary); }
     .day-task { font-size: 0.85rem; flex: 1; }
 
-    /* Oefening kaarten */
     .ex-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
     .ex-target {
       background: var(--primary-glow); color: var(--primary);
@@ -112,7 +105,7 @@
     .ex-cue { font-size: 0.8rem; color: var(--text-dim); margin: 6px 0 12px 0; }
     
     .set-grid {
-      display: grid; grid-template-columns: 44px 1fr 1fr 40px; gap: 8px;
+      display: grid; grid-template-columns: 44px 1fr 1fr 42px; gap: 8px;
       align-items: center; margin-bottom: 8px;
     }
     .set-num { font-size: 0.78rem; font-weight: 700; color: var(--text-dim); }
@@ -122,12 +115,11 @@
     }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); }
     .done-btn {
-      width: 40px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
+      width: 42px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
       background: var(--bg); color: var(--text-dim); font-size: 1rem; font-weight: 800; cursor: pointer;
     }
     .done-btn.checked { background: var(--green); border-color: var(--green); color: #052e16; }
 
-    /* Logboek */
     .field { margin-bottom: 12px; }
     .field label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-dim); margin-bottom: 5px; }
     .save-btn {
@@ -142,12 +134,11 @@
     .log-date { font-size: 0.74rem; color: var(--text-dim); }
     .log-title { font-size: 0.9rem; font-weight: 700; margin: 3px 0; }
     .log-sub { font-size: 0.8rem; color: var(--text-dim); }
-    .del-x { background: none; border: none; color: var(--red); font-size: 1.2rem; cursor: pointer; padding: 0 4px; }
+    .del-x { background: none; border: none; color: var(--red); font-size: 1.3rem; cursor: pointer; padding: 0 6px; }
 
-    /* Bottom Navigation */
     .bottom-nav {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;
-      background: rgba(21, 28, 44, 0.98); backdrop-filter: blur(10px);
+      background: rgba(21, 28, 44, 0.98);
       border-top: 1px solid var(--border);
       display: grid; grid-template-columns: repeat(4, 1fr);
       padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px)) 4px;
@@ -165,10 +156,10 @@
 
   <header class="app-header">
     <div class="brand-row">
-      <span class="brand-tag">Road to Wijchen • 19 km</span>
+      <span class="brand-tag">Road to Wijchen • v4.0</span>
       <button type="button" class="reset-btn" id="btn-reset">↻ Nieuwe week</button>
     </div>
-    <h1>Strong Viking Beast</h1>
+    <h1>Strong Viking Beast 19km</h1>
     <div class="sub">10 april 2027 • 2x Lopen + 2x Kracht</div>
 
     <div class="countdown">
@@ -194,7 +185,6 @@
   </div>
 
   <div class="container">
-    <!-- VIEW 1: SCHEMA -->
     <div id="v-plan" class="view active">
       <div class="card">
         <div class="card-title">Weekindeling (4 trainingen)</div>
@@ -209,3 +199,7 @@
       <div class="card">
         <span class="pill">Fase 1 • Week 1 – 6 (Nu – begin jan)</span>
         <div class="card-title">Pezen & Gewrichten Laten Wennen</div>
+        <p class="card-desc">Start pas als enkel en knie 100% pijnvrij zijn. Begin met 30 min (4 min joggen / 2 min wandelen) en bouw rustig uit naar 45 min op laag tempo. Fitness op RPE 7.</p>
+      <div class="card">
+        <span class="pill">Fase 2 • Week 7 – 14 (Jan – eind feb)</span>
+        <div class="card-title">Volume & Gripkracht Opbouwen</div>
