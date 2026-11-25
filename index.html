@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strong Viking 2027 - Dashboard</title>
+  <title>Strong Viking 2027 - Sport Dashboard</title>
   <script src="https://tailwindcss.com"></script>
   <script src="https://jsdelivr.net"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8">
+<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8 font-sans">
 
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Header & Aftelklok -->
-    <header class="bg-slate-800 border border-slate-700 rounded-2xl p-6 
-                   flex flex-col md:flex-row justify-between items-center gap-6">
+    <header class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
       <div>
-        <span class="text-xs font-bold uppercase text-amber-500">Doel: April 2027</span>
-        <h1 class="text-2xl font-extrabold text-white mt-1">Strong Viking Dashboard</h1>
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-500">Doel: April 2027</span>
+        <h1 class="text-2xl md:text-3xl font-extrabold text-white mt-1">Strong Viking Voorbereiding</h1>
+        <p class="text-slate-400 text-sm mt-1">Stapsgewijs opbouwen naar de finish.</p>
       </div>
       
       <div class="flex gap-3 text-center">
-        <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 w-20">
+        <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 min-w-[70px]">
           <span id="days" class="block text-2xl font-bold text-amber-500">--</span>
           <span class="text-xs text-slate-400">Dagen</span>
         </div>
-        <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 w-20">
+        <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 min-w-[70px]">
           <span id="hours" class="block text-2xl font-bold text-amber-500">--</span>
           <span class="text-xs text-slate-400">Uren</span>
         </div>
-        <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 w-20">
+        <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 min-w-[70px]">
           <span id="minutes" class="block text-2xl font-bold text-amber-500">--</span>
           <span class="text-xs text-slate-400">Min</span>
         </div>
@@ -38,73 +38,217 @@
     <!-- Grid voor Weekschema en Grafiek -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
-      <!-- Vak 1: Weekschema -->
-      <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-lg font-bold text-white">Weekoverzicht</h2>
-          <button onclick="resetWeek()" class="text-xs text-slate-400 hover:text-amber-400">
-            Reset week
-          </button>
+      <!-- Weekschema -->
+      <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-white">Weekoverzicht Trainingen</h2>
+            <button onclick="resetWeek()" class="text-xs text-slate-400 hover:text-amber-400 underline">Week resetten</button>
+          </div>
+          
+          <ul class="space-y-3" id="schedule-list">
+            <li class="bg-slate-900/70 border border-slate-700/80 rounded-xl p-3.5 flex items-start gap-3">
+              <input type="checkbox" id="task-ma" onchange="saveTasks()" class="mt-1 w-5 h-5 accent-amber-500 rounded cursor-pointer">
+              <label for="task-ma" class="cursor-pointer flex-1">
+                <span class="block font-semibold text-amber-400 text-sm">Maandag • Sportschool</span>
+                <span class="text-slate-200 text-sm">Trek, grip & benen</span>
+              </label>
+            </li>
+
+            <li class="bg-slate-900/70 border border-slate-700/80 rounded-xl p-3.5 flex items-start gap-3">
+              <input type="checkbox" id="task-di" onchange="saveTasks()" class="mt-1 w-5 h-5 accent-amber-500 rounded cursor-pointer">
+              <label for="task-di" class="cursor-pointer flex-1">
+                <span class="block font-semibold text-amber-400 text-sm">Dinsdag • Hardlopen</span>
+                <span class="text-slate-200 text-sm">Korte interval / opbouwen</span>
+              </label>
+            </li>
+
+            <li class="bg-slate-900/70 border border-slate-700/80 rounded-xl p-3.5 flex items-start gap-3">
+              <input type="checkbox" id="task-do" onchange="saveTasks()" class="mt-1 w-5 h-5 accent-amber-500 rounded cursor-pointer">
+              <label for="task-do" class="cursor-pointer flex-1">
+                <span class="block font-semibold text-amber-400 text-sm">Donderdag • Thuis</span>
+                <span class="text-slate-200 text-sm">6kg KB en enkel/knie balans</span>
+              </label>
+            </li>
+
+            <li class="bg-slate-900/70 border border-slate-700/80 rounded-xl p-3.5 flex items-start gap-3">
+              <input type="checkbox" id="task-vr" onchange="saveTasks()" class="mt-1 w-5 h-5 accent-amber-500 rounded cursor-pointer">
+              <label for="task-vr" class="cursor-pointer flex-1">
+                <span class="block font-semibold text-amber-400 text-sm">Vrijdag • Hardlopen</span>
+                <span class="text-slate-200 text-sm">Rustige duurloop (praattempo)</span>
+              </label>
+            </li>
+          </ul>
         </div>
-        
-        <ul class="space-y-3">
-          <li class="bg-slate-900/70 border border-slate-700 rounded-xl p-3 flex gap-3">
-            <input type="checkbox" id="task-ma" onchange="saveTasks()" class="mt-1 accent-amber-500">
-            <label for="task-ma" class="cursor-pointer">
-              <span class="block font-semibold text-amber-400 text-sm">Ma. Sportschool</span>
-              <span class="text-slate-200 text-sm">Trek, grip & benen</span>
-            </label>
-          </li>
 
-          <li class="bg-slate-900/70 border border-slate-700 rounded-xl p-3 flex gap-3">
-            <input type="checkbox" id="task-di" onchange="saveTasks()" class="mt-1 accent-amber-500">
-            <label for="task-di" class="cursor-pointer">
-              <span class="block font-semibold text-amber-400 text-sm">Di. Hardlopen</span>
-              <span class="text-slate-200 text-sm">Korte interval / opbouwen</span>
-            </label>
-          </li>
-
-          <li class="bg-slate-900/70 border border-slate-700 rounded-xl p-3 flex gap-3">
-            <input type="checkbox" id="task-do" onchange="saveTasks()" class="mt-1 accent-amber-500">
-            <label for="task-do" class="cursor-pointer">
-              <span class="block font-semibold text-amber-400 text-sm">Do. Thuis</span>
-              <span class="text-slate-200 text-sm">6kg KB en enkel/knie balans</span>
-            </label>
-          </li>
-
-          <li class="bg-slate-900/70 border border-slate-700 rounded-xl p-3 flex gap-3">
-            <input type="checkbox" id="task-vr" onchange="saveTasks()" class="mt-1 accent-amber-500">
-            <label for="task-vr" class="cursor-pointer">
-              <span class="block font-semibold text-amber-400 text-sm">Vr. Hardlopen</span>
-              <span class="text-slate-200 text-sm">Rustige duurloop (praattempo)</span>
-            </label>
-          </li>
-        </ul>
-
-        <div class="mt-6 pt-4 border-t border-slate-700 flex justify-between text-sm">
-          <span class="text-slate-400">Voortgang:</span>
+        <div class="mt-6 pt-4 border-t border-slate-700 flex justify-between items-center text-sm">
+          <span class="text-slate-400">Voortgang deze week:</span>
           <span id="progress-text" class="font-bold text-amber-500">0 / 4 voltooid</span>
         </div>
       </section>
 
-      <!-- Vak 2: Hardloop Grafiek -->
-      <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-lg font-bold text-white">Gelopen Kilometers</h2>
-          <span id="total-km" class="text-xs font-bold text-amber-400">Totaal: 0 km</span>
-        </div>
+      <!-- Hardloop Staafgrafiek -->
+      <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-white">Gelopen Kilometers</h2>
+            <span id="total-km" class="text-xs font-bold bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">Totaal: 0 km</span>
+          </div>
 
-        <div class="h-48 w-full mb-4">
-          <canvas id="runningChart"></canvas>
-        </div>
+          <!-- Grafiek Canvas -->
+          <div class="h-48 w-full mb-4">
+            <canvas id="runningChart"></canvas>
+          </div>
 
-        <div id="km-inputs" class="grid grid-cols-7 gap-1.5 text-center"></div>
+          <!-- Invoervelden per dag -->
+          <div class="grid grid-cols-7 gap-1.5 text-center mt-2">
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Ma</label>
+              <input type="number" step="0.1" min="0" id="km-0" oninput="updateKm(0, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Di</label>
+              <input type="number" step="0.1" min="0" id="km-1" oninput="updateKm(1, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Wo</label>
+              <input type="number" step="0.1" min="0" id="km-2" oninput="updateKm(2, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Do</label>
+              <input type="number" step="0.1" min="0" id="km-3" oninput="updateKm(3, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Vr</label>
+              <input type="number" step="0.1" min="0" id="km-4" oninput="updateKm(4, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Za</label>
+              <input type="number" step="0.1" min="0" id="km-5" oninput="updateKm(5, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Zo</label>
+              <input type="number" step="0.1" min="0" id="km-6" oninput="updateKm(6, this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-1.5 text-center text-sm text-white focus:border-amber-500 focus:outline-none">
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 mt-4 text-center">Vul je kilometers in per dag; de grafiek past zich direct aan.</p>
       </section>
 
     </div>
   </div>
 
-  <!-- Koppeling naar het JavaScript-bestand -->
-  <script src="app.js"></script>
+  <script>
+    // 1. AFTELKLOK LOGICA (Ingesteld op 1 april 2027 - pas eventueel de exacte datum aan)
+    const targetDate = new Date("2027-04-01T09:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 2. WEEKSCHEMA & OPSLAG LOGICA
+    const taskIds = ['task-ma', 'task-di', 'task-do', 'task-vr'];
+
+    function loadTasks() {
+      const saved = JSON.parse(localStorage.getItem('sv_tasks')) || {};
+      let completed = 0;
+      taskIds.forEach(id => {
+        const checkbox = document.getElementById(id);
+        checkbox.checked = !!saved[id];
+        if (checkbox.checked) completed++;
+      });
+      document.getElementById('progress-text').innerText = `${completed} / 4 voltooid`;
+    }
+
+    function saveTasks() {
+      const state = {};
+      let completed = 0;
+      taskIds.forEach(id => {
+        const isChecked = document.getElementById(id).checked;
+        state[id] = isChecked;
+        if (isChecked) completed++;
+      });
+localStorage.setItem('sv_tasks', JSON.stringify(state));
+document.getElementById('progress-text').innerText = ${completed} / 4 voltooid;
+}
+function resetWeek() {
+localStorage.removeItem('sv_tasks');
+localStorage.removeItem('sv_km');
+loadTasks();
+kmData =;
+kmData.forEach((val, i) => document.getElementById(km-${i}).value = val || '');
+updateChart();
+}
+// 3. STAAFGRAFIEK LOGICA (Chart.js)
+let kmData = JSON.parse(localStorage.getItem('sv_km')) || [0, 3.5, 0, 0, 5.0, 0, 0];
+const ctx = document.getElementById('runningChart').getContext('2d');
+const runningChart = new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
+datasets: [{
+label: 'Kilometers',
+data: kmData,
+backgroundColor: '#f59e0b',
+borderRadius: 6,
+barThickness: 22
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: { display: false }
+},
+scales: {
+y: {
+beginAtZero: true,
+grid: { color: '#334155' },
+ticks: { color: '#94a3b8' }
+},
+x: {
+grid: { display: false },
+ticks: { color: '#94a3b8' }
+}
+}
+}
+});
+function updateKm(dayIndex, value) {
+kmData[dayIndex] = parseFloat(value) || 0;
+localStorage.setItem('sv_km', JSON.stringify(kmData));
+updateChart();
+}
+function updateChart() {
+runningChart.data.datasets[0].data = kmData;
+runningChart.update();
+const total = kmData.reduce((acc, curr) => acc + curr, 0);
+document.getElementById('total-km').innerText = Totaal: ${total.toFixed(1)} km;
+}
+// Initialiseren bij opstarten
+loadTasks();
+kmData.forEach((val, i) => {
+document.getElementById(km-${i}).value = val > 0 ? val : '';
+});
+updateChart();
+
+</script>
 </body>
 </html>
