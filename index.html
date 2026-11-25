@@ -16,7 +16,7 @@
     .tag { background:rgba(249,115,22,.2); color:var(--acc); font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px; }
     h1 { margin:0; font-size:22px; } .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
     .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
-    .ttl { font-weight:800; font-size:17px; margin:0 0 14px 0; display:flex; justify-content:space-between; align-items:center; color:var(--txt); }
+    .ttl { font-weight:800; font-size:16px; margin:0 0 12px 0; display:flex; justify-content:space-between; align-items:center; color:var(--txt); }
     .cd { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
     .cd div { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:10px 4px; text-align:center; }
     .cd b { display:block; font-size:21px; color:var(--acc); } .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
@@ -38,7 +38,11 @@
     .stabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
     .stab { background:var(--card); border:1px solid var(--line); color:var(--dim); padding:10px; border-radius:10px; text-align:center; font-weight:700; font-size:13px; cursor:pointer; }
     .stab.on { border-color:var(--acc); color:var(--acc); background:rgba(249,115,22,.15); }
-    .exin { display:grid; grid-template-columns:1fr 1fr 42px; gap:8px; margin-top:8px; }
+    
+    /* 4 kolommen: Sets | Reps | Kg | Check */
+    .exin { display:grid; grid-template-columns:1fr 1fr 1fr 42px; gap:6px; margin-top:8px; }
+    .prev-badge { display:inline-block; background:var(--bg); border:1px solid var(--line); color:var(--grn); font-size:11px; font-weight:600; padding:3px 8px; border-radius:6px; margin-top:4px; }
+
     .u-block { margin-bottom:18px; }
     .u-block:last-child { margin-bottom:0; }
     .u-head { font-weight:700; font-size:15px; color:var(--acc); margin-bottom:4px; }
@@ -51,7 +55,7 @@
 <body>
 <div class="wrap">
   <div id="p-dash" class="pg on">
-    <div class="top"><span class="tag">STRONG VIKING 19 KM • V16</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
+    <div class="top"><span class="tag">STRONG VIKING 19 KM • V17</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
     <h1>Dashboard</h1><div class="sub">Wijchen Beast • 10 april 2027</div>
     <div class="box"><div class="ttl">Aftellen tot de start</div>
       <div class="cd"><div><b id="d">0</b><span>Dagen</span></div><div><b id="h">0</b><span>Uren</span></div><div><b id="m">0</b><span>Min</span></div><div><b id="s">0</b><span>Sec</span></div></div>
@@ -76,8 +80,8 @@
   </div>
 
   <div id="p-work" class="pg">
-    <div class="top"><span class="tag">KRACHT & STABILITEIT</span><button type="button" class="sbtn" id="btn-reset-e">↻ Vinkjes wissen</button></div>
-    <h1>Oefeningen</h1><div class="sub">Vul sets en reps in + gebruik je eigen rustteller</div>
+    <div class="top"><span class="tag">KRACHT & STABILITEIT</span><button type="button" class="sbtn" id="btn-reset-e">↻ Nieuwe sessie (bewaar vorige)</button></div>
+    <h1>Oefeningen</h1><div class="sub">Je gewicht en reps blijven automatisch bewaard</div>
     <div class="box" style="border-color:var(--acc);">
       <div class="ttl"><span>Rustteller</span><span style="font-size:11px;color:var(--dim);">Zelf seconden invullen</span></div>
       <div class="rgrid">
@@ -137,22 +141,22 @@
     { id: 'w3', t: '3. Hardlopen: Rustige duurloop (praattempo)' },
     { id: 'w4', t: '4. Thuis: 6 kg Kettlebell & enkel/knie balans' }
   ];
-  var wd = JSON.parse(localStorage.getItem('sv16_w') || '{}');
+  var wd = JSON.parse(localStorage.getItem('sv17_w') || '{}');
   function drawW() {
     var el = document.getElementById('wlist'); el.innerHTML = '';
     wt.forEach(function(x) {
       var d = document.createElement('div'); d.className = 'wrow';
       var sp = document.createElement('span'); sp.style.fontSize = '14px'; sp.textContent = x.t;
-      var b = document.createElement('button'); b.type = 'button';
-      b.className = 'chk' + (wd[x.id] ? ' ok' : ''); b.textContent = '✓';
-      b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv16_w', JSON.stringify(wd)); drawW(); });
+var b = document.createElement('button'); b.type = 'button';
+b.className = 'chk' + (wd[x.id] ? ' ok' : ''); b.textContent = '✓';
+b.addEventListener('click', function() { wd[x.id] = !wd[x.id]; localStorage.setItem('sv17_w', JSON.stringify(wd)); drawW(); });
 d.appendChild(sp); d.appendChild(b); el.appendChild(d);
 });
 }
-document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv16_w', '{}'); drawW(); });
+document.getElementById('btn-reset-w').addEventListener('click', function() { wd = {}; localStorage.setItem('sv17_w', '{}'); drawW(); });
 var td = new Date().toISOString().slice(0, 10);
 document.getElementById('r-date').value = td;
-var runs = JSON.parse(localStorage.getItem('sv16_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53"}]');
+var runs = JSON.parse(localStorage.getItem('sv17_r') || '[{"id":1,"date":"' + td + '","km":5.23,"time":"36:00","pace":"6:53"}]');
 function calcPace() {
 var km = parseFloat(document.getElementById('r-km').value);
 var tm = document.getElementById('r-time').value.trim();
@@ -181,7 +185,7 @@ stDiv.appendChild(kmSp); stDiv.appendChild(document.createTextNode(' • ' + r.t
 info.appendChild(dtDiv); info.appendChild(stDiv);
 var x = document.createElement('button'); x.type = 'button'; x.textContent = '×';
 x.style.cssText = 'background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;';
-x.addEventListener('click', function() { runs = runs.filter(function(i) { return i.id !== r.id; }); localStorage.setItem('sv16_r', JSON.stringify(runs)); drawR(); });
+x.addEventListener('click', function() { runs = runs.filter(function(i) { return i.id !== r.id; }); localStorage.setItem('sv17_r', JSON.stringify(runs)); drawR(); });
 d.appendChild(info); d.appendChild(x); h.appendChild(d);
 });
 var ch = document.getElementById('chart'); ch.innerHTML = '';
@@ -204,7 +208,7 @@ var dt = document.getElementById('r-date').value, km = parseFloat(document.getEl
 var tm = document.getElementById('r-time').value, pc = document.getElementById('r-pace').value;
 if (!km) return alert('Vul km in');
 runs.unshift({ id: Date.now(), date: dt, km: km, time: tm || '-', pace: pc || '-' });
-localStorage.setItem('sv16_r', JSON.stringify(runs));
+localStorage.setItem('sv17_r', JSON.stringify(runs));
 document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
 drawR();
 });
@@ -235,30 +239,61 @@ h: [
 { id: 'h6', n: 'Finisher: Swings + Burpees + Plank', r: '3 rondes' }
 ]
 };
-var ctab = 'g', est = JSON.parse(localStorage.getItem('sv16_e') || '{}');
+var ctab = 'g';
+var est = JSON.parse(localStorage.getItem('sv17_e') || '{}');
+var prevEst = JSON.parse(localStorage.getItem('sv17_prev') || '{}');
 document.getElementById('st-g').addEventListener('click', function() { ctab = 'g'; this.classList.add('on'); document.getElementById('st-h').classList.remove('on'); drawE(); });
 document.getElementById('st-h').addEventListener('click', function() { ctab = 'h'; this.classList.add('on'); document.getElementById('st-g').classList.remove('on'); drawE(); });
 function drawE() {
 var el = document.getElementById('elist'); el.innerHTML = '';
 exs[ctab].forEach(function(e) {
-var s = est[e.id] || { s: '', r: '', ok: false };
+var s = est[e.id] || { s: '', r: '', w: '', ok: false };
+var p = prevEst[e.id];
 var b = document.createElement('div'); b.className = 'box';
-var hd = document.createElement('div'); hd.className = 'ttl'; hd.style.marginBottom = '4px';
+var hd = document.createElement('div'); hd.className = 'ttl'; hd.style.marginBottom = '2px';
 var nSp = document.createElement('span'); nSp.textContent = e.n;
 var rSp = document.createElement('span'); rSp.style.cssText = 'font-size:11px;color:var(--dim);'; rSp.textContent = e.r;
 hd.appendChild(nSp); hd.appendChild(rSp); b.appendChild(hd);
+if (p && (p.w || p.r || p.s)) {
+var pb = document.createElement('div'); pb.className = 'prev-badge';
+var txt = 'Vorige keer: ' + (p.s ? p.s + ' sets' : '') + (p.r ? ' × ' + p.r + ' reps' : '') + (p.w ? ' @ ' + p.w + ' kg' : '');
+pb.textContent = txt.trim();
+b.appendChild(pb);
+}
 var g = document.createElement('div'); g.className = 'exin';
-var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s;
-i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv16_e', JSON.stringify(est)); });
-var i2 = document.createElement('input'); i2.placeholder = 'Reps / kg'; i2.value = s.r;
-i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv16_e', JSON.stringify(est)); });
+var i1 = document.createElement('input'); i1.placeholder = 'Sets'; i1.value = s.s || '';
+i1.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].s = i1.value; localStorage.setItem('sv17_e', JSON.stringify(est)); });
+var i2 = document.createElement('input'); i2.placeholder = 'Reps'; i2.value = s.r || '';
+i2.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].r = i2.value; localStorage.setItem('sv17_e', JSON.stringify(est)); });
+var i3 = document.createElement('input'); i3.placeholder = 'Kg'; i3.value = s.w || '';
+i3.addEventListener('input', function() { est[e.id] = est[e.id] || {}; est[e.id].w = i3.value; localStorage.setItem('sv17_e', JSON.stringify(est)); });
 var k = document.createElement('button'); k.type = 'button'; k.className = 'chk' + (s.ok ? ' ok' : '');
 k.style.width = '42px'; k.style.height = '40px'; k.textContent = '✓';
-k.addEventListener('click', function() { est[e.id] = est[e.id] || {}; est[e.id].ok = !est[e.id].ok; localStorage.setItem('sv16_e', JSON.stringify(est)); drawE(); });
-g.appendChild(i1); g.appendChild(i2); g.appendChild(k); b.appendChild(g); el.appendChild(b);
+k.addEventListener('click', function() {
+est[e.id] = est[e.id] || {};
+est[e.id].ok = !est[e.id].ok;
+if (est[e.id].ok && (est[e.id].w || est[e.id].r || est[e.id].s)) {
+prevEst[e.id] = { s: est[e.id].s || '', r: est[e.id].r || '', w: est[e.id].w || '' };
+localStorage.setItem('sv17_prev', JSON.stringify(prevEst));
+}
+localStorage.setItem('sv17_e', JSON.stringify(est));
+drawE();
+});
+g.appendChild(i1); g.appendChild(i2); g.appendChild(i3); g.appendChild(k);
+b.appendChild(g); el.appendChild(b);
 });
 }
-document.getElementById('btn-reset-e').addEventListener('click', function() { Object.keys(est).forEach(function(k) { est[k].ok = false; }); localStorage.setItem('sv16_e', JSON.stringify(est)); drawE(); });
+document.getElementById('btn-reset-e').addEventListener('click', function() {
+Object.keys(est).forEach(function(k) {
+if (est[k].w || est[k].r || est[k].s) {
+prevEst[k] = { s: est[k].s || '', r: est[k].r || '', w: est[k].w || '' };
+}
+est[k].ok = false;
+});
+localStorage.setItem('sv17_prev', JSON.stringify(prevEst));
+localStorage.setItem('sv17_e', JSON.stringify(est));
+drawE();
+});
 var uitlegData = [
 { cat: '🌬️ Ademhaling tijdens het hardlopen', items: [
 { t: '1. Buikademhaling', d: 'Laat je buik uitzetten bij het inademen in plaats van alleen je borstkas te heffen. Zo gebruik je je volledige longcapaciteit en voorkom je steken in je zij.' },
