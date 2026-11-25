@@ -61,18 +61,19 @@
     /* Sticky Rusttimer */
     .timer-strip {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(21, 28, 44, 0.95); backdrop-filter: blur(8px);
+      background: rgba(21, 28, 44, 0.96); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
     }
     .timer-left { display: flex; align-items: center; gap: 8px; }
-    .timer-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-    .timer-val { font-size: 1.15rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .timer-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+    .timer-val { font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
     .timer-actions { display: flex; gap: 6px; }
     .t-btn {
       background: var(--surface-2); color: var(--text); border: 1px solid var(--border);
-      padding: 6px 10px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+      padding: 7px 11px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
     }
+    .t-btn:active { background: var(--primary); color: #fff; }
     .t-btn.stop { background: rgba(239, 68, 68, 0.15); color: var(--red); border-color: rgba(239, 68, 68, 0.3); }
 
     /* Container & Cards */
@@ -165,7 +166,7 @@
   <header class="app-header">
     <div class="brand-row">
       <span class="brand-tag">Road to Wijchen • 19 km</span>
-      <button class="reset-btn" onclick="resetWeek()">↻ Nieuwe week</button>
+      <button type="button" class="reset-btn" id="btn-reset">↻ Nieuwe week</button>
     </div>
     <h1>Strong Viking Beast</h1>
     <div class="sub">10 april 2027 • 2x Lopen + 2x Kracht</div>
@@ -185,10 +186,10 @@
       <span class="timer-val" id="t-val">00:00</span>
     </div>
     <div class="timer-actions">
-      <button class="t-btn" onclick="runTimer(45)">45s</button>
-      <button class="t-btn" onclick="runTimer(60)">60s</button>
-      <button class="t-btn" onclick="runTimer(90)">90s</button>
-      <button class="t-btn stop" onclick="clearTimer()">Stop</button>
+      <button type="button" class="t-btn" id="t-45">45s</button>
+      <button type="button" class="t-btn" id="t-60">60s</button>
+      <button type="button" class="t-btn" id="t-90">90s</button>
+      <button type="button" class="t-btn stop" id="t-stop">Stop</button>
     </div>
   </div>
 
