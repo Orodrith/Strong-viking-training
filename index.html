@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Strong Viking 19km Tracker</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-light: #334155;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --success: #22c55e;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      margin: 0; padding: 0 0 85px 0;
+      background-color: var(--bg); color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      padding: 18px 16px; border-bottom: 1px solid #334155;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .header-top { display: flex; justify-content: space-between; align-items: center; }
+    h1 { margin: 0; font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px; color: var(--accent); text-transform: uppercase; }
+    .subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    
+    /* Aftelklok */
+    .countdown-box {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+      margin-top: 14px; background: rgba(15, 23, 42, 0.7);
+      padding: 10px; border-radius: 10px; border: 1px solid #334155;
+    }
+    .cd-item { text-align: center; }
+    .cd-num { font-size: 1.25rem; font-weight: 800; color: var(--text); }
+    .cd-label { font-size: 0.65rem; text-transform: uppercase; color: var(--muted); }
+
+    /* Rusttimer balk */
+    .timer-bar {
+      background: #1e293b; padding: 10px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+    .timer-display { font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--success); }
+    .timer-btns button {
+      background: var(--card-light); color: var(--text); border: none;
+      padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin-left: 4px; cursor: pointer;
+    }
+    .timer-btns button.stop { background: var(--danger); }
+
+    main { padding: 16px; max-width: 600px; margin: 0 auto; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card {
+      background: var(--card); border-radius: 12px; padding: 14px;
+      margin-bottom: 14px; border: 1px solid #334155;
+    }
+    .card h2 { margin: 0 0 8px 0; font-size: 1rem; color: var(--accent); }
+    .card p { margin: 0 0 8px 0; font-size: 0.88rem; line-height: 1.45; color: #cbd5e1; }
+    .badge {
+      display: inline-block; background: rgba(249, 115, 22, 0.15);
+      color: var(--accent); font-size: 0.72rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 99px; margin-bottom: 8px;
+    }
+
+    /* Workout invulvelden */
+    .exercise-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .exercise-title { font-weight: 700; font-size: 0.95rem; }
+    .exercise-target { font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+    .exercise-cue { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+    
+    .set-row {
+      display: grid; grid-template-columns: 45px 1fr 1fr 38px; gap: 8px;
+      align-items: center; margin-bottom: 6px;
+    }
+    .set-label { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+    input[type="text"], input[type="number"], input[type="date"], select, textarea {
+      width: 100%; background: var(--bg); border: 1px solid #475569;
+      color: var(--text); padding: 8px; border-radius: 8px; font-size: 0.88rem;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+    .check-btn {
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid #475569;
+      background: var(--bg); color: var(--muted); font-weight: bold; cursor: pointer;
+    }
+    .check-btn.done { background: var(--success); border-color: var(--success); color: #052e16; }
+
+    /* Knoppen & Logboek */
+    .btn-primary {
+      width: 100%; background: var(--accent); color: white; border: none;
+      padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; margin-top: 8px;
+    }
+    .btn-secondary {
+      background: var(--card-light); color: var(--text); border: none;
+      padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; cursor: pointer;
+    }
+    .form-group { margin-bottom: 10px; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    
+    .log-item {
+      background: var(--bg); padding: 12px; border-radius: 10px;
+      margin-bottom: 10px; border-left: 4px solid var(--accent);
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .log-meta { font-size: 0.75rem; color: var(--muted); }
+    .log-main { font-weight: 700; font-size: 0.92rem; margin: 3px 0; }
+    .log-note { font-size: 0.82rem; color: #cbd5e1; }
+    .del-btn { background: none; border: none; color: var(--danger); font-size: 1.1rem; cursor: pointer; padding: 0 4px; }
+
+    /* Navigatie onderaan */
+    nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #1e293b; border-top: 1px solid #334155;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      padding: 6px 0 env(safe-area-inset-bottom, 8px) 0; z-index: 20;
+    }
+    nav button {
+      background: none; border: none; color: var(--muted);
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 0.7rem; font-weight: 600; padding: 6px 2px; cursor: pointer;
+    }
+    nav button.active { color: var(--accent); }
+    nav button span.icon { font-size: 1.2rem; margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div>
+        <h1>Strong Viking Beast</h1>
+        <div class="subtitle">19 km • Wijchen (10 april 2027)</div>
+      </div>
+      <button class="btn-secondary" onclick="resetWorkoutChecks()">Nieuwe week</button>
+    </div>
+    <div class="countdown-box">
+      <div class="cd-item"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Dagen</div></div>
+      <div class="cd-item"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Uren</div></div>
+      <div class="cd-item"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Min</div></div>
+      <div class="cd-item"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Sec</div></div>
+    </div>
+  </header>
+
+  <div class="timer-bar">
+    <div>
+      <span style="font-size: 0.75rem; color: var(--muted);">RUSTTIMER: </span>
+      <span class="timer-display" id="timer-display">00:00</span>
+    </div>
+    <div class="timer-btns">
+      <button onclick="startTimer(45)">45s</button>
+      <button onclick="startTimer(60)">60s</button>
+      <button onclick="startTimer(90)">90s</button>
+      <button class="stop" onclick="stopTimer()">Stop</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- TAB 1: SCHEMA & FASEN -->
+    <section id="tab-plan" class="tab-content active">
+      <div class="card">
+        <span class="badge">Weekstructuur (4x per week)</span>
+        <h2>Jouw Ideale Weekindeling</h2>
+        <p>• <strong>Dag 1 – Hardlopen:</strong> Korte interval / techniek (ritme, geen sprint).<br>
+           • <strong>Dag 2 – Sportschool:</strong> Trekkracht, grip & zware benen.<br>
+           • <strong>Dag 3 – Rust / Wandelen:</strong> Herstel voor pezen & gewrichten.<br>
+           • <strong>Dag 4 – Hardlopen:</strong> Rustige duurloop op praattempo.<br>
+           • <strong>Dag 5 – Thuis (6 kg KB):</strong> Core, eenbenige balans & conditie.<br>
+           • <strong>Dag 6 & 7 – Rust:</strong> Volledig herstel.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Fase 1 • Week 1 – 6 (Nu – begin jan)</span>
+        <h2>Pezen & Gewrichten Laten Wennen</h2>
+        <p><strong>Hardlopen:</strong> Start pas als linker enkel en rechter knie 100% pijnvrij zijn. Start met 30 min (bijv. 4 min joggen / 2 min wandelen) en bouw rustig uit naar 45 min op laag tempo.<br>
+           <strong>Fitness:</strong> Focus op stabiliteit, kuitheffen en techniek (RPE 7).</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Fase 2 • Week 7 – 14 (Jan – eind feb)</span>
+        <h2>Volume & Gripkracht Opbouwen</h2>
+        <p><strong>Hardlopen:</strong> 1x 45–55 min met tempowisselingen + 1x duurloop uitbouwen van 8 naar 12–13 km op praattempo.<br>
+           <strong>Fitness:</strong> Zwaardere pull-ups, farmer's carries voor grip en hogere herhalingen.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Fase 3 • Week 15 – 19 (Maart – 10 april)</span>
+        <h2>OCR-Specifiek & Taper</h2>
+        <p><strong>Uitrusting:</strong> Koop eind februari/begin maart modderschoenen (bijv. Salomon Speedcross 6) om in te lopen.<br>
+           <strong>Hardlopen:</strong> 1x 50 min met elke 10 min 15 burpees/lunges tussendoor + 1x duurloop max 13–14 km. Laatste week gas terug (taper).</p>
+      </div>
+    </section>
+
+    <!-- TAB 2: SPORTSCHOOL WORKOUT -->
+    <section id="tab-gym" class="tab-content">
+      <div class="card">
+        <h2>Sportschool: Grip, Trek & Benen</h2>
+        <p>Vul per set je gebruikte gewicht (kg) en herhalingen (reps) in. Je invoer blijft automatisch bewaard.</p>
+      </div>
+      <div id="gym-exercises"></div>
+    </section>
+
+    <!-- TAB 3: THUIS WORKOUT (6 KG KB) -->
+    <section id="tab-home" class="tab-content">
+      <div class="card">
