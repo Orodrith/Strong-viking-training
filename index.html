@@ -12,15 +12,18 @@
     * { box-sizing:border-box; font-family:system-ui,-apple-system,sans-serif; }
     body { margin:0 0 90px 0; background:var(--bg); color:var(--txt); }
     .wrap { max-width:560px; margin:0 auto; padding:16px; }
-    .pg { display:none; } .pg.on { display:block; }
+    .pg { display:none; }
+    .pg.on { display:block; }
     .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
     .tag { background:rgba(249,115,22,.2); color:var(--acc); font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px; }
-    h1 { margin:0; font-size:22px; } .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
+    h1 { margin:0; font-size:22px; }
+    .sub { color:var(--dim); font-size:13px; margin:2px 0 14px; }
     .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
     .ttl { font-weight:800; font-size:16px; margin:0 0 12px 0; display:flex; justify-content:space-between; align-items:center; color:var(--txt); }
     .cd { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
     .cd div { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:10px 4px; text-align:center; }
-    .cd b { display:block; font-size:21px; color:var(--acc); } .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
+    .cd b { display:block; font-size:21px; color:var(--acc); }
+    .cd span { font-size:10px; color:var(--dim); text-transform:uppercase; }
     .wrow { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); }
     .wrow:last-child { border:none; }
     .chk { width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:transparent; font-weight:800; cursor:pointer; flex-shrink:0; }
@@ -55,7 +58,8 @@
     .plan-wk { font-size:12px; font-weight:800; color:var(--acc); text-transform:uppercase; }
     .plan-run { font-size:13.5px; font-weight:700; margin:3px 0; }
     .plan-str { font-size:12px; color:var(--dim); }
-    .u-block { margin-bottom:18px; } .u-block:last-child { margin-bottom:0; }
+    .u-block { margin-bottom:18px; }
+    .u-block:last-child { margin-bottom:0; }
     .u-head { font-weight:700; font-size:15px; color:var(--acc); margin-bottom:4px; }
     .u-desc { font-size:13.5px; color:var(--dim); line-height:1.55; margin:0; white-space:pre-line; }
     .nav { position:fixed; bottom:0; left:0; right:0; z-index:99; background:var(--card); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(5,1fr); padding:10px 0 14px; }
@@ -65,9 +69,11 @@
 </head>
 <body>
 <div class="wrap">
+  <!-- PAGINA 1: DASHBOARD -->
   <div id="p-dash" class="pg on">
-    <div class="top"><span class="tag">STRONG VIKING 19 KM • V19</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
-    <h1>Dashboard</h1><div class="sub">Wijchen Beast • 10 april 2027</div>
+    <div class="top"><span class="tag">STRONG VIKING 19 KM • V19.1</span><button type="button" class="sbtn" id="btn-reset-w">↻ Reset week</button></div>
+    <h1>Dashboard</h1>
+    <div class="sub">Wijchen Beast • 10 april 2027</div>
     <div class="box"><div class="ttl">Aftellen tot de start</div>
       <div class="cd"><div><b id="d">0</b><span>Dagen</span></div><div><b id="h">0</b><span>Uren</span></div><div><b id="m">0</b><span>Min</span></div><div><b id="s">0</b><span>Sec</span></div></div>
     </div>
@@ -90,15 +96,19 @@
     </div>
   </div>
 
+  <!-- PAGINA 2: PLANNING -->
   <div id="p-plan" class="pg">
     <div class="top"><span class="tag">19-WEKEN ROADMAP</span></div>
-    <h1>Trainingsplanning</h1><div class="sub">Van nu tot 10 april 2027 • Vink afgeronde weken af</div>
+    <h1>Trainingsplanning</h1>
+    <div class="sub">Van nu tot 10 april 2027 • Vink afgeronde weken af</div>
     <div id="plist"></div>
   </div>
 
+  <!-- PAGINA 3: HARDLOPEN -->
   <div id="p-run" class="pg">
     <div class="top"><span class="tag">HARDLOPEN</span></div>
-    <h1>Hardloop Logboek</h1><div class="sub">Log je afstand, tijd, pace en inspanningszone</div>
+    <h1>Hardloop Logboek</h1>
+    <div class="sub">Log je afstand, tijd, pace en inspanningszone</div>
     <div class="box">
       <div class="g2">
         <div><label>Datum</label><input type="date" id="r-date"></div>
