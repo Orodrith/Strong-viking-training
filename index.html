@@ -332,10 +332,7 @@ shoe.km = (parseFloat(shoe.km) || 0) + km; localStorage.setItem('sv20_shoe', JSO
 document.getElementById('r-km').value = ''; document.getElementById('r-time').value = ''; document.getElementById('r-pace').value = '';
 drawR();
 });
----
 
-### Blok 4 van 4: JavaScript Deel B — Oefeningen, Back-up & Uitleg (plak direct onder Blok 3)
-```html
   var ti = null, tr = 60;
   function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
   document.getElementById('t-in').addEventListener('input', function() { if (!ti) document.getElementById('t-out').textContent = fmt(parseInt(this.value, 10) || 0); });
